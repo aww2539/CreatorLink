@@ -1,0 +1,23 @@
+
+
+section.edit__bio {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+section.edit__bio div{
+    display: flex;
+    flex-direction: column;
+}
+
+section.edit__links {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+section.edit__links div{
+    display: flex;
+    flex-direction: column;
+}

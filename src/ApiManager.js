@@ -11,6 +11,10 @@ export const getUsers = () => {
 }
 
 export const getProfileLinks = () => {
-    return fetch("http://localhost:8088/profileLinks")
+    return fetch(`http://localhost:8088/profileLinks`)
         .then(res => res.json())
+}
+
+export const getCurrentUser = () => {
+    return localStorage.getItem("creatorLink_user")
 }

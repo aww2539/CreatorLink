@@ -4,7 +4,13 @@
         "id": 1,
         "email": "aww2539@gmail.com",
         "password": "aww2539",
-        "displayName": "Woody"
+        "name": "Woody"
+      },
+      {
+        "id": 2,
+        "email": "sunless@khan.com",
+        "password": "sunless",
+        "name": "Sunless"
       }
     ],
     "posts": [
@@ -19,13 +25,36 @@
             "body": "Second Post",
             "timestamp": 1629405146768,
             "id": 2 
+        },
+        {
+            "userId": 1,
+            "body": "Third Post",
+            "timestamp": 1629405146768,
+            "id": 3 
+        },
+        {
+            "userId": 1,
+            "body": "Fourth Post",
+            "timestamp": 1629405146768,
+            "id": 4 
+        },
+        {
+            "userId": 1,
+            "body": "Fifth Post",
+            "timestamp": 1629405146768,
+            "id": 5 
         }
     ],
     "profiles": [
         {
             "userId": 1,
-            "bio": "Rocket League Content Creator",
+            "bio": "Woody's Bio",
             "id": 1
+        },
+        {
+            "userId": 2,
+            "bio": "Sunless's Bio",
+            "id": 2
         }
     ],
     "profileLinks": [
@@ -51,6 +80,14 @@
             "url": "https://www.twitch.tv/its_woodyyyy",
             "title": "Twitch",
             "description": "My Twitch!",
+            "id": 3
+        },
+        {
+            "profileId": 2,
+            "show": true,
+            "url": "https://www.youtube.com/c/SunlessKhan",
+            "title": "Sunless's YouTube Channel",
+            "description": "Go sub!",
             "id": 3
         }
     ],
