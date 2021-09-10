@@ -1,12 +1,24 @@
 import React from "react"
 import { Route } from "react-router-dom"
-import { CreatorLink } from "./components/CreatorLink"
+import { getCurrentUser } from "./ApiManager"
+import { NewsFeed } from "./components/mainfeed/Feed"
+import { MyProfile } from "./components/profiles/MyProfile"
+import { Search } from "./components/search/Search"
 
 export const ApplicationViews = () => {
+    const userId = getCurrentUser()
     return (
         <>
             <Route path="/home">
-                <CreatorLink />
+                <NewsFeed />
+            </Route>
+
+            <Route exact path={`/profile/${userId}`}>
+                <MyProfile />
+            </Route>
+
+            <Route exact path="/search">
+                <Search />
             </Route>
         </>
     )
