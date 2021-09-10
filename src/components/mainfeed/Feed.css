@@ -1,0 +1,9 @@
+article.newsFeed {
+    display: flex;
+    flex-direction: column;
+}
+
+article.newsFeed section {
+    display: flex;
+    flex-direction: column;
+}

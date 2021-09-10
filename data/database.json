@@ -1,0 +1,58 @@
+{
+    "users": [
+      {
+        "id": 1,
+        "email": "aww2539@gmail.com",
+        "password": "aww2539",
+        "displayName": "Woody"
+      }
+    ],
+    "posts": [
+        {
+            "userId": 1,
+            "body": "First Post",
+            "timestamp": 1629405146768,
+            "id": 1 
+        },
+        {
+            "userId": 1,
+            "body": "Second Post",
+            "timestamp": 1629405146768,
+            "id": 2 
+        }
+    ],
+    "profiles": [
+        {
+            "userId": 1,
+            "bio": "Rocket League Content Creator",
+            "id": 1
+        }
+    ],
+    "profileLinks": [
+        {
+            "profileId": 1,
+            "show": true,
+            "url": "https://www.twitter.com/its_woodyyyy",
+            "title": "Twitter",
+            "description": "My Twitter!",
+            "id": 1
+        },
+        {
+            "profileId": 1,
+            "show": true,
+            "url": "https://www.youtube.com/c/Woodyyyy",
+            "title": "YouTube",
+            "description": "My YouTube!",
+            "id": 2
+        },
+        {
+            "profileId": 1,
+            "show": true,
+            "url": "https://www.twitch.tv/its_woodyyyy",
+            "title": "Twitch",
+            "description": "My Twitch!",
+            "id": 3
+        }
+    ],
+    "follows": []
+  }
