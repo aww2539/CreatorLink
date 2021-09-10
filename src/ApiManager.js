@@ -11,7 +11,7 @@ export const getUsers = () => {
 }
 
 export const getProfileLinks = () => {
-    return fetch("http://localhost:8088/profileLinks?_expand=profile")
+    return fetch(`http://localhost:8088/profileLinks`)
         .then(res => res.json())
 }
 

@@ -25,7 +25,7 @@ export const NewsFeed = () => {
                 {
                     posts.map((post) => {
                         return <section className="feed__post" key={`post--${post.id}`}>
-                                <h3>{post.user.displayName}</h3>
+                                <h3>{post.user?.name}</h3>
                                 <p>{post.body}</p>
                                 <p>Posted at {post.timestamp}</p>
                             </section>

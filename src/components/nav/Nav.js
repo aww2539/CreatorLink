@@ -17,7 +17,9 @@ export const Nav = () => {
                 <Link className="navbar__link" to={`/profile/${userId}`}>My Profile</Link>
             </li>
             <li className="navbar__item active">
-                <Link className="navbar__link" to="/login">Logout</Link>
+                <Link className="navbar__link" to="/login" onClick={
+                    () => localStorage.removeItem("creatorLink_user")
+                }>Logout</Link>
             </li>
         </ul>
     )

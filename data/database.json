@@ -4,7 +4,13 @@
         "id": 1,
         "email": "aww2539@gmail.com",
         "password": "aww2539",
-        "displayName": "Woody"
+        "name": "Woody"
+      },
+      {
+        "id": 2,
+        "email": "sunless@khan.com",
+        "password": "sunless",
+        "name": "Sunless"
       }
     ],
     "posts": [
@@ -42,8 +48,13 @@
     "profiles": [
         {
             "userId": 1,
-            "bio": "Rocket League Content Creator",
+            "bio": "Woody's Bio",
             "id": 1
+        },
+        {
+            "userId": 2,
+            "bio": "Sunless's Bio",
+            "id": 2
         }
     ],
     "profileLinks": [
@@ -69,6 +80,14 @@
             "url": "https://www.twitch.tv/its_woodyyyy",
             "title": "Twitch",
             "description": "My Twitch!",
+            "id": 3
+        },
+        {
+            "profileId": 2,
+            "show": true,
+            "url": "https://www.youtube.com/c/SunlessKhan",
+            "title": "Sunless's YouTube Channel",
+            "description": "Go sub!",
             "id": 3
         }
     ],

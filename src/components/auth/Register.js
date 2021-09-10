@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react"
-import { useHistory } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 import "./Login.css"
 
 export const Register = (props) => {
@@ -70,6 +70,7 @@ export const Register = (props) => {
                     <input onChange={updateUser} type="email" id="email" className="form-control" placeholder="Email address" required />
                 </fieldset>
                 <fieldset>
+                    <Link className="cancel__button" to={`/login`}><button>Cancel</button></Link>
                     <button type="submit"> Register </button>
                 </fieldset>
             </form>
