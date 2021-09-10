@@ -21,8 +21,12 @@ export const CreatorLink = () => {
                             <h1>CreatorLink</h1>
                         </header>
                         <main id="mainContainer">
-                            <QuickAccess />
-                            <ApplicationViews />
+                            <article className="quick__access">
+                                <QuickAccess />
+                            </article>
+                            <article className="application">
+                                <ApplicationViews />
+                            </article>
                         </main>
                     </>
             );

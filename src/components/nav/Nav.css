@@ -12,7 +12,25 @@
 
 .quickAccess {
     display: flex;
-    flex-direction: row;
-    margin: 1rem 1rem 1rem 0rem ;
+    flex-direction: column;
+    margin: 1rem 1rem 1rem 0.5rem ;
     padding: 0.1rem;
+    border: solid black;
+}
+
+article.quick__access {
+    overflow-y: scroll;
+}
+
+article.quick__access::-webkit-scrollbar {
+    width: 5px;
+}
+   
+article.quick__access::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+   
+article.quick__access::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
 }

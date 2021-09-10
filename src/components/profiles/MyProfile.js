@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 import { getCurrentUser } from "../../ApiManager"
 
 export const MyProfile = () => {
     const [profile, setProfile] = useState({})
+    const [links, updateLinks] = useState([])
     const userId = getCurrentUser()
 
 
@@ -19,11 +21,16 @@ export const MyProfile = () => {
         []
     )
 
+    useEffect(() => {
+        
+    })
+
     return (
         <>
 
         <article>
             <h2>User profiles</h2>
+            <Link className="edit__button" to={`/profile/${userId}/edit`}><button>Edit Profile</button></Link>
         </article>
 
         </>

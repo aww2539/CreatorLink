@@ -19,6 +19,24 @@
             "body": "Second Post",
             "timestamp": 1629405146768,
             "id": 2 
+        },
+        {
+            "userId": 1,
+            "body": "Third Post",
+            "timestamp": 1629405146768,
+            "id": 3 
+        },
+        {
+            "userId": 1,
+            "body": "Fourth Post",
+            "timestamp": 1629405146768,
+            "id": 4 
+        },
+        {
+            "userId": 1,
+            "body": "Fifth Post",
+            "timestamp": 1629405146768,
+            "id": 5 
         }
     ],
     "profiles": [

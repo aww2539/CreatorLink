@@ -1,9 +1,16 @@
 article.newsFeed {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    margin: 3rem;
+    border: solid black;
 }
 
 article.newsFeed section {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    margin: 1rem;
+    border: solid black;
+    width: 600px;
 }
