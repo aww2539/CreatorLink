@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import { Link } from "react-router-dom"
 import { useState } from "react/cjs/react.development"
 import { getCurrentUser, getProfileLinks } from "../../ApiManager"
+import { AddLinksForm } from "./AddProfileLinks"
 import "./EditProfiles.css"
 
 
@@ -44,7 +45,7 @@ export const EditProfile = () => {
             <section className="edit__links">
                 <div>
                     <h4>Add link</h4>
-
+                    <AddLinksForm />
                 </div>
                 <div>
                     <h4>Current links</h4>
