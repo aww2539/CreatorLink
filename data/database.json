@@ -42,7 +42,7 @@
   "profiles": [
     {
       "userId": 1,
-      "bio": "bio update",
+      "bio": "eric test",
       "id": 1
     },
     {
@@ -54,7 +54,7 @@
   "profileLinks": [
     {
       "profileId": 1,
-      "order": 2,
+      "order": 3,
       "show": true,
       "url": "https://www.twitter.com/its_woodyyyy",
       "title": "Twitter",
@@ -72,7 +72,7 @@
     },
     {
       "profileId": 1,
-      "order": 3,
+      "order": 2,
       "show": true,
       "url": "https://www.twitch.tv/its_woodyyyy",
       "title": "Twitch",

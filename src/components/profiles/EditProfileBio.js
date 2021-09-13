@@ -58,7 +58,7 @@ export const EditProfileBio = () => {
                             required autoFocus
                             type="text"
                             className="form-control"
-                            placeholder="New Bio..."
+                            defaultValue={profile.bio}
                         />
                 <button className="btn btn-primary" onClick={saveBio}>
                     Update

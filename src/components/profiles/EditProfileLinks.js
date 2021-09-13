@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react/cjs/react.development";
 import { getCurrentUser, getProfileLinks } from "../../ApiManager";
+import OrderProfileLinks from "./OrderProfileLinks";
 
 
 export const EditProfileLinks = () => {
@@ -54,6 +55,8 @@ export const EditProfileLinks = () => {
         })
         .then(fetchLinks)
     }
+
+
 
     return (
         <>
@@ -124,8 +127,25 @@ export const EditProfileLinks = () => {
             <ol className="profileLink__list">
             {
                 profileLinks.map((link) => {
+                        const linkAbove = link.order - 1
+                        const linkBelow = link.order + 1
+                        const foundLinkAbove = profileLinks.find(l => l.order === linkAbove)
+                        const foundLinkBelow = profileLinks.find(l => l.order === linkBelow)
+                        console.log(link.order);
+
+
                         return <> 
-                            <li><a href={link.url} target="_blank">{link.title}</a></li>
+                            <li key={link.id}><a href={link.url} target="_blank">{link.title}</a>
+
+                                <button onClick={() => {
+                                    OrderProfileLinks.moveLinkUp(link.id, link.order, foundLinkAbove?.id, foundLinkAbove?.order).then(fetchLinks)
+                                }}>Move Up</button>
+
+                                <button onClick={() => {
+                                    OrderProfileLinks.moveLinkDown(link.id, link.order, foundLinkBelow?.id, foundLinkBelow?.order).then(fetchLinks)
+                                }}>Move Down</button>
+
+                            </li>
                             <button onClick={() => {deleteLink(link.id)}}>Delete</button>
                         </>
                     })

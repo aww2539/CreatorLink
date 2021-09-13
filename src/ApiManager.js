@@ -1,7 +1,7 @@
 
 
 export const getPosts = () => {
-    return fetch("http://localhost:8088/posts?_expand=user&_sort=createdAt&_order=desc") // sort descending by createdAt property
+    return fetch("http://localhost:8088/posts?_expand=user&_sort=createdAt&_order=desc")
         .then(res => res.json())
 }
 
