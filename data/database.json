@@ -42,7 +42,7 @@
   "profiles": [
     {
       "userId": 1,
-      "bio": "update bio test 2",
+      "bio": "bio update",
       "id": 1
     },
     {
@@ -54,6 +54,7 @@
   "profileLinks": [
     {
       "profileId": 1,
+      "order": 2,
       "show": true,
       "url": "https://www.twitter.com/its_woodyyyy",
       "title": "Twitter",
@@ -62,6 +63,7 @@
     },
     {
       "profileId": 1,
+      "order": 1,
       "show": true,
       "url": "https://www.youtube.com/c/Woodyyyy",
       "title": "YouTube",
@@ -70,6 +72,7 @@
     },
     {
       "profileId": 1,
+      "order": 3,
       "show": true,
       "url": "https://www.twitch.tv/its_woodyyyy",
       "title": "Twitch",
@@ -78,6 +81,7 @@
     },
     {
       "profileId": 2,
+      "order": 1,
       "show": true,
       "url": "https://www.youtube.com/c/SunlessKhan",
       "title": "Sunless's YouTube Channel",
@@ -86,6 +90,7 @@
     },
     {
       "profileId": 2,
+      "order": 2,
       "show": true,
       "title": "sunless test link 1",
       "url": "sunless test url 1",

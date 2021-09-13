@@ -10,8 +10,8 @@ export const getUsers = () => {
         .then(res => res.json())
 }
 
-export const getProfileLinks = () => {
-    return fetch(`http://localhost:8088/profileLinks`)
+export const getProfileLinks = (id) => {
+    return fetch(`http://localhost:8088/profileLinks?profileId=${id}&_sort=order&_order=asc`)
         .then(res => res.json())
 }
 

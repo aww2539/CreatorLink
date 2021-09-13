@@ -21,13 +21,11 @@ export const MyProfile = () => {
     )
 
     useEffect(() => {
-        getProfileLinks()
+        getProfileLinks(userId)
         .then((data => {updateLinks(data)}))
     },[]
     )
-
-    const matchingLinks = links.filter(link => link.profileId === profile.id && link.show === true)
-
+    
     return (
         <>
 
@@ -38,7 +36,7 @@ export const MyProfile = () => {
 
             <section className="profile__links">
                 {
-                    matchingLinks.map((link) => {
+                    links.map((link) => {
                         {
                         return <div key={`link--${link.id}`}>
                                 <h3>{link.title}</h3>
