@@ -13,6 +13,9 @@ export const ApplicationViews = () => {
     const userId = getCurrentUser()
     return (
         <>
+            <Route exact path="/">
+                <NewsFeed />
+            </Route>
             <Route exact path="/home">
                 <NewsFeed />
             </Route>

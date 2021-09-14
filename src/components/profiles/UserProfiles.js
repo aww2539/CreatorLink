@@ -18,13 +18,13 @@ export const UserProfile = () => {
                 })
 
         },
-        []
+        [profileId]
     )
 
     useEffect(() => {
         getProfileLinks(profileId)
         .then((data => {updateLinks(data)}))
-    },[]
+    },[profileId]
     )
     
     return (

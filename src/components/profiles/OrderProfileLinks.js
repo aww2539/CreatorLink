@@ -26,8 +26,8 @@ export default {
                 })
             }
     
-            await fetch(`http://localhost:8088/profileLinks/${id}`, chosenLinkData)
-            .then(() => {fetch(`http://localhost:8088/profileLinks/${idOfLinkAbove}`, otherLinkData)})
+            return await fetch(`http://localhost:8088/profileLinks/${id}`, chosenLinkData)
+            .then(() => { return fetch(`http://localhost:8088/profileLinks/${idOfLinkAbove}`, otherLinkData)})
 
     },
 
@@ -54,7 +54,7 @@ export default {
                 })
             }
     
-            await fetch(`http://localhost:8088/profileLinks/${id}`, chosenLinkData)
-            .then(() => {fetch(`http://localhost:8088/profileLinks/${idOfLinkBelow}`, otherLinkData)})
+            return await fetch(`http://localhost:8088/profileLinks/${id}`, chosenLinkData)
+            .then(() => {return fetch(`http://localhost:8088/profileLinks/${idOfLinkBelow}`, otherLinkData)})
     }
 }
