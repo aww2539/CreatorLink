@@ -17,6 +17,7 @@ export const CreatePost = () => {
             userId: parseInt(currentUser),
             body: newPost.body,
             createdAt: Date.now(),
+            edited: false
         }
 
         const fetchOption = {

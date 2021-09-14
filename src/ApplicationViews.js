@@ -2,6 +2,7 @@ import React from "react"
 import { Route } from "react-router-dom"
 import { getCurrentUser } from "./ApiManager"
 import { CreatePost } from "./components/mainfeed/CreatePost"
+import { EditPost } from "./components/mainfeed/EditPost"
 import { NewsFeed } from "./components/mainfeed/Feed"
 import { EditProfile } from "./components/profiles/EditProfiles"
 import { MyProfile } from "./components/profiles/MyProfile"
@@ -17,6 +18,9 @@ export const ApplicationViews = () => {
             </Route>
                     <Route exact path="/home/create">
                         <CreatePost />
+                    </Route>
+                    <Route exact path="/home/post/edit/:postId(\d+)">
+                        <EditPost />
                     </Route>
 
             <Route exact path="/profile/:profileId(\d+)">
