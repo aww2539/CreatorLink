@@ -28,45 +28,58 @@
   "posts": [
     {
       "userId": 1,
-      "body": "First Post",
-      "createdAt": 1629405146768,
+      "body": "First Post test edit 2",
+      "createdAt": 1631638760979,
+      "edited": false,
       "id": 1
     },
     {
       "userId": 2,
       "body": "Sunless test post",
       "createdAt": 1631492504044,
+      "edited": false,
       "id": 3
     },
     {
       "userId": 2,
       "body": "sunless post 2",
       "createdAt": 1631492579951,
+      "edited": false,
       "id": 4
     },
     {
       "userId": 1,
-      "body": "woody 2nd post",
-      "createdAt": 1631493721168,
+      "body": "woody 2nd post test edit 1",
+      "createdAt": 1631638735791,
+      "edited": false,
       "id": 5
     },
     {
       "userId": 3,
       "body": "HI GUYS IM JOSH",
       "createdAt": 1631583558179,
+      "edited": false,
       "id": 6
     },
     {
       "userId": 4,
       "body": "hey again",
       "createdAt": 1631631825919,
+      "edited": false,
       "id": 9
+    },
+    {
+      "userId": 1,
+      "body": "post to test edit function and change timestamp/edited boolean after edit EDIT TEST 1.5",
+      "createdAt": 1631639170007,
+      "edited": true,
+      "id": 10
     }
   ],
   "profiles": [
     {
       "userId": 1,
-      "bio": "test for eric",
+      "bio": "Test Update",
       "id": 1
     },
     {
@@ -88,7 +101,7 @@
   "profileLinks": [
     {
       "profileId": 1,
-      "order": 5,
+      "order": 1,
       "show": true,
       "url": "https://www.twitter.com/its_woodyyyy",
       "title": "Twitter",
@@ -97,7 +110,7 @@
     },
     {
       "profileId": 1,
-      "order": 2,
+      "order": 3,
       "show": true,
       "url": "https://www.youtube.com/c/Woodyyyy",
       "title": "YouTube",
@@ -106,7 +119,7 @@
     },
     {
       "profileId": 1,
-      "order": 3,
+      "order": 5,
       "show": true,
       "url": "https://www.twitch.tv/its_woodyyyy",
       "title": "Twitch",
@@ -133,7 +146,7 @@
     },
     {
       "profileId": 1,
-      "order": 1,
+      "order": 4,
       "show": true,
       "title": "TikTok",
       "url": "https://www.tiktok.com",
@@ -142,7 +155,7 @@
     },
     {
       "profileId": 1,
-      "order": 4,
+      "order": 2,
       "show": true,
       "title": "Instagram",
       "url": "https://www.instagram.com",

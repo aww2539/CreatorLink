@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useHistory } from "react-router"
+import { useHistory, useParams } from "react-router"
 import { getCurrentUser, getPosts } from "../../ApiManager"
 import "./Feed.css"
 
@@ -40,11 +40,11 @@ export const NewsFeed = () => {
                         return <section className="feed__post" key={`post--${post.id}`}>
                                 <h3>{post.user?.name}</h3>
                                 <p>{post.body}</p>
-                                <p>Posted at {post.createdAt}</p>
+                                {post.edited === false ? <p>Posted at {post.createdAt}</p> : <p>Edited at {post.createdAt}</p>}
 
                                 {post.userId === parseInt(currentUser) ? 
                                 <>
-                                    <button>Edit</button>
+                                    <button onClick={() => history.push(`/home/post/edit/${post.id}`)}>Edit</button>
                                     <button className="btn btn-primary" onClick={() => {deletePost(post.id)}}>Delete</button>
                                 </> 
                                 : ""}
