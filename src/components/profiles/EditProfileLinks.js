@@ -1,11 +1,12 @@
 import { useEffect } from "react";
 import { useState } from "react/cjs/react.development";
 import { getCurrentUser, getProfileLinks } from "../../ApiManager";
+import OrderProfileLinks from "./OrderProfileLinks";
+import "./EditProfiles.css"
 
 
 export const EditProfileLinks = () => {
     const [profileLinks, updateProfileLinks] = useState([])
-    const [profile, setProfile] = useState({})
     const userId = getCurrentUser()
     const [link, updateLink] = useState({
         show: true,
@@ -13,8 +14,9 @@ export const EditProfileLinks = () => {
         url: "",
         description: "",
     });
-    const fetchLinks = () => {
-        getProfileLinks()
+    
+    const fetchLinks = async () => {
+        getProfileLinks(userId)
         .then((data => {updateProfileLinks(data)}))
     }
 
@@ -23,19 +25,12 @@ export const EditProfileLinks = () => {
     },[]
     )
 
-    useEffect(
-        () => {
-            return fetch(`http://localhost:8088/profiles/${userId}?_expand=user`)
-                .then(response => response.json())
-                .then((data) => {setProfile(data)})
-        },[]
-    )
-
     const saveLink = (event) => {
         event.preventDefault()
 
         const newLink = {
             profileId: parseInt(userId),
+            order: profileLinks.length + 1,
             show: true,
             title: link.title,
             url: link.url,
@@ -63,7 +58,8 @@ export const EditProfileLinks = () => {
         .then(fetchLinks)
     }
 
-    const matchingLinks = profileLinks.filter(profileLink => profileLink.profileId === profile.id)
+        
+
 
     return (
         <>
@@ -131,13 +127,35 @@ export const EditProfileLinks = () => {
         </div>
         <div>
             <h4>Current links</h4>
+            <ol className="profileLink__list">
             {
-                matchingLinks.map((link) => {
-                    return <ul key={link.id}>
-                        <li><a href={link.url} target="_blank">{link.title}</a></li><button onClick={() => {deleteLink(link.id)}}>Delete</button>
-                    </ul>
-                })
+                profileLinks.map((link) => {
+                        const linkAbove = link.order - 1
+                        const linkBelow = link.order + 1
+                        const foundLinkAbove = profileLinks.find(l => l.order === linkAbove)
+                        const foundLinkBelow = profileLinks.find(l => l.order === linkBelow)
+                        console.log(link.order);
+
+
+                        return <> 
+                            <li key={link.id}><a href={link.url} target="_blank">{link.title}</a>
+
+                                {link.order === 1 ? "" : <button onClick={() => {
+                                    OrderProfileLinks.moveLinkUp(link.id, link.order, foundLinkAbove?.id, foundLinkAbove?.order).then(() => { setTimeout(() => {fetchLinks()}, 50)
+                                    })
+                                }}>Move Up</button>}
+
+                                {profileLinks.length === link.order ? "" : <button onClick={() => {
+                                    OrderProfileLinks.moveLinkDown(link.id, link.order, foundLinkBelow?.id, foundLinkBelow?.order).then(() => { setTimeout(() => {fetchLinks()}, 50) 
+                                    })
+                                }}>Move Down</button>}
+
+                            </li>
+                            <button className="delete__btn" onClick={() => {deleteLink(link.id)}}>Delete</button>
+                        </>
+                    })
             }
+            </ol>
         </div>
         </>
     )

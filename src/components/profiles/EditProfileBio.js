@@ -26,18 +26,14 @@ export const EditProfileBio = () => {
     const saveBio = (event) => {
         event.preventDefault()
 
-        const newBio = {
-            userId: parseInt(currentUser),
-            bio: profileBio.text,
-            id: profile.id
-        }
-
         const fetchOption = {
-            method: "PUT",
+            method: "PATCH",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(newBio)
+            body: JSON.stringify({
+                bio: profileBio.text
+            })
         }
 
         return fetch(`http://localhost:8088/profiles/${currentUser}`, fetchOption)
@@ -62,7 +58,7 @@ export const EditProfileBio = () => {
                             required autoFocus
                             type="text"
                             className="form-control"
-                            placeholder="New Bio..."
+                            defaultValue={profile.bio}
                         />
                 <button className="btn btn-primary" onClick={saveBio}>
                     Update

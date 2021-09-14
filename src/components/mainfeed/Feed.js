@@ -38,10 +38,17 @@ export const NewsFeed = () => {
                 {
                     posts.map((post) => {
                         return <section className="feed__post" key={`post--${post.id}`}>
-                                {post.userId === parseInt(currentUser) ? <button className="btn btn-primary" onClick={() => {deletePost(post.id)}}>Delete</button> : ""}
                                 <h3>{post.user?.name}</h3>
                                 <p>{post.body}</p>
                                 <p>Posted at {post.createdAt}</p>
+
+                                {post.userId === parseInt(currentUser) ? 
+                                <>
+                                    <button>Edit</button>
+                                    <button className="btn btn-primary" onClick={() => {deletePost(post.id)}}>Delete</button>
+                                </> 
+                                : ""}
+                                
                             </section>
                     })
                 }
