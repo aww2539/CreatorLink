@@ -5,6 +5,7 @@ import { CreatePost } from "./components/mainfeed/CreatePost"
 import { NewsFeed } from "./components/mainfeed/Feed"
 import { EditProfile } from "./components/profiles/EditProfiles"
 import { MyProfile } from "./components/profiles/MyProfile"
+import { UserProfile } from "./components/profiles/UserProfiles"
 import { Search } from "./components/search/Search"
 
 export const ApplicationViews = () => {
@@ -18,7 +19,11 @@ export const ApplicationViews = () => {
                         <CreatePost />
                     </Route>
 
-            <Route exact path={`/profile/${userId}`}>
+            <Route exact path="/profile/:profileId(\d+)">
+                <UserProfile />
+            </Route>
+
+            <Route exact path={`/profile/My${userId}`}>
                 <MyProfile />
             </Route>
                     <Route exact path={`/profile/${userId}/edit`}>

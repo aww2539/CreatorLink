@@ -3,7 +3,7 @@
 
 export default {
 
-    moveLinkUp(id, orderNumber, idOfLinkAbove, orderNumberOfLinkAbove) {
+   async moveLinkUp(id, orderNumber, idOfLinkAbove, orderNumberOfLinkAbove) {
         // 2 patches. one adding 1 to the order of the chosen link. one subtracting 1 from the order property of the link above
     
             const chosenLinkData = {
@@ -26,14 +26,12 @@ export default {
                 })
             }
     
-            return fetch(`http://localhost:8088/profileLinks/${id}`, chosenLinkData)
-                .then(() => {
-                    fetch(`http://localhost:8088/profileLinks/${idOfLinkAbove}`, otherLinkData)
-                })
+            await fetch(`http://localhost:8088/profileLinks/${id}`, chosenLinkData)
+            .then(() => {fetch(`http://localhost:8088/profileLinks/${idOfLinkAbove}`, otherLinkData)})
 
     },
 
-    moveLinkDown(id, orderNumber, idOfLinkBelow, orderNumberOfLinkBelow) {
+    async moveLinkDown(id, orderNumber, idOfLinkBelow, orderNumberOfLinkBelow) {
         // 2 patches. one adding 1 to the order of the chosen link. one subtracting 1 from the order property of the link above
     
             const chosenLinkData = {
@@ -56,9 +54,7 @@ export default {
                 })
             }
     
-            return fetch(`http://localhost:8088/profileLinks/${id}`, chosenLinkData)
-                .then(() => {
-                    fetch(`http://localhost:8088/profileLinks/${idOfLinkBelow}`, otherLinkData)
-                })
+            await fetch(`http://localhost:8088/profileLinks/${id}`, chosenLinkData)
+            .then(() => {fetch(`http://localhost:8088/profileLinks/${idOfLinkBelow}`, otherLinkData)})
     }
 }

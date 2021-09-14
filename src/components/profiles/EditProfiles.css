@@ -21,3 +21,12 @@ section.edit__links div{
     display: flex;
     flex-direction: column;
 }
+
+ol.profileLink__list li {
+    margin-top: 1rem;
+    font-size: 19px;
+}
+
+ol.profileLink__list a {
+    margin: 0rem 1rem 0rem 0rem;
+}

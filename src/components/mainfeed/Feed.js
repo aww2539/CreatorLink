@@ -41,7 +41,14 @@ export const NewsFeed = () => {
                                 <h3>{post.user?.name}</h3>
                                 <p>{post.body}</p>
                                 <p>Posted at {post.createdAt}</p>
-                                {post.userId === parseInt(currentUser) ? <button className="btn btn-primary" onClick={() => {deletePost(post.id)}}>Delete</button> : ""}
+
+                                {post.userId === parseInt(currentUser) ? 
+                                <>
+                                    <button>Edit</button>
+                                    <button className="btn btn-primary" onClick={() => {deletePost(post.id)}}>Delete</button>
+                                </> 
+                                : ""}
+                                
                             </section>
                     })
                 }

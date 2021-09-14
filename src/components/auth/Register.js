@@ -29,9 +29,24 @@ export const Register = (props) => {
                         .then(createdUser => {
                             if (createdUser.hasOwnProperty("id")) {
                                 localStorage.setItem("creatorLink_user", createdUser.id)
-                                history.push("/")
+                                const newProfile = { userId: createdUser.id, bio: "" }
+                        
+                                const fetchOption = {
+                                    method: "POST",
+                                    headers: {
+                                        "Content-Type": "application/json"
+                                    },
+                                    body: JSON.stringify(newProfile)
+                                }
+                        
+                                return fetch("http://localhost:8088/profiles", fetchOption)
+                                        .then(() => { history.push("/") })
+                                
                             }
                         })
+
+
+                    
                 }
                 else {
                     conflictDialog.current.showModal()
@@ -56,18 +71,18 @@ export const Register = (props) => {
             <form className="form--login" onSubmit={handleRegister}>
                 <h1 className="h3 mb-3 font-weight-normal">CreatorLink Registration</h1>
                 <fieldset>
-                    <label htmlFor="name"> Full Name </label>
+                    <label htmlFor="name"> Email </label>
                     <input onChange={updateUser}
-                           type="text" id="name" className="form-control"
-                           placeholder="Enter your name" required autoFocus />
+                           type="text" id="email" className="form-control"
+                           placeholder="Enter your email" required autoFocus />
                 </fieldset>
                 <fieldset>
-                    <label htmlFor="address"> Address </label>
-                    <input onChange={updateUser} type="text" id="address" className="form-control" placeholder="Street address" required />
+                    <label htmlFor="email"> Password </label>
+                    <input onChange={updateUser} type="password" id="password" className="form-control" placeholder="Password" required />
                 </fieldset>
                 <fieldset>
-                    <label htmlFor="email"> Email address </label>
-                    <input onChange={updateUser} type="email" id="email" className="form-control" placeholder="Email address" required />
+                    <label htmlFor="address"> Name </label>
+                    <input onChange={updateUser} type="text" id="name" className="form-control" placeholder="Enter your name" required />
                 </fieldset>
                 <fieldset>
                     <Link className="cancel__button" to={`/login`}><button>Cancel</button></Link>

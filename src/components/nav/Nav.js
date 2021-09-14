@@ -14,7 +14,7 @@ export const Nav = () => {
                 <Link className="navbar__link" to="/search">Search</Link>
             </li>
             <li className="navbar__item active">
-                <Link className="navbar__link" to={`/profile/${userId}`}>My Profile</Link>
+                <Link className="navbar__link" to={`/profile/My${userId}`}>My Profile</Link>
             </li>
             <li className="navbar__item active">
                 <Link className="navbar__link" to="/login" onClick={

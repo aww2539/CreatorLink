@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useState } from "react/cjs/react.development";
 import { getCurrentUser, getProfileLinks } from "../../ApiManager";
 import OrderProfileLinks from "./OrderProfileLinks";
+import "./EditProfiles.css"
 
 
 export const EditProfileLinks = () => {
@@ -13,7 +14,8 @@ export const EditProfileLinks = () => {
         url: "",
         description: "",
     });
-    const fetchLinks = () => {
+    
+    const fetchLinks = async () => {
         getProfileLinks(userId)
         .then((data => {updateProfileLinks(data)}))
     }
@@ -56,6 +58,7 @@ export const EditProfileLinks = () => {
         .then(fetchLinks)
     }
 
+        
 
 
     return (
@@ -137,16 +140,18 @@ export const EditProfileLinks = () => {
                         return <> 
                             <li key={link.id}><a href={link.url} target="_blank">{link.title}</a>
 
-                                <button onClick={() => {
-                                    OrderProfileLinks.moveLinkUp(link.id, link.order, foundLinkAbove?.id, foundLinkAbove?.order).then(fetchLinks)
-                                }}>Move Up</button>
+                                {link.order === 1 ? "" : <button onClick={() => {
+                                    OrderProfileLinks.moveLinkUp(link.id, link.order, foundLinkAbove?.id, foundLinkAbove?.order).then(() => { setTimeout(() => {fetchLinks()}, 50)
+                                    })
+                                }}>Move Up</button>}
 
-                                <button onClick={() => {
-                                    OrderProfileLinks.moveLinkDown(link.id, link.order, foundLinkBelow?.id, foundLinkBelow?.order).then(fetchLinks)
-                                }}>Move Down</button>
+                                {profileLinks.length === link.order ? "" : <button onClick={() => {
+                                    OrderProfileLinks.moveLinkDown(link.id, link.order, foundLinkBelow?.id, foundLinkBelow?.order).then(() => { setTimeout(() => {fetchLinks()}, 50) 
+                                    })
+                                }}>Move Down</button>}
 
                             </li>
-                            <button onClick={() => {deleteLink(link.id)}}>Delete</button>
+                            <button className="delete__btn" onClick={() => {deleteLink(link.id)}}>Delete</button>
                         </>
                     })
             }
