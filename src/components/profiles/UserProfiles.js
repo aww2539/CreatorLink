@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router"
 import { getProfileLinks } from "../../ApiManager"
+import { CloudinaryContext, Image } from 'cloudinary-react';
 
 
 export const UserProfile = () => {
@@ -29,8 +30,16 @@ export const UserProfile = () => {
     
     return (
         <>
+
         <article className="profile">
             <h2>Welcome to {profile.user?.name}'s CreatorLink!</h2>
+
+            <CloudinaryContext cloudName="creatorlink">
+                <div>
+                    <Image publicId="sample" width="50" />
+                </div>
+            </CloudinaryContext>
+            
             <h4>{profile.bio}</h4>
 
             <section className="profile__links">
