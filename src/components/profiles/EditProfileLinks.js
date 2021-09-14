@@ -141,13 +141,11 @@ export const EditProfileLinks = () => {
                             <li key={link.id}><a href={link.url} target="_blank">{link.title}</a>
 
                                 {link.order === 1 ? "" : <button onClick={() => {
-                                    OrderProfileLinks.moveLinkUp(link.id, link.order, foundLinkAbove?.id, foundLinkAbove?.order).then(() => { setTimeout(() => {fetchLinks()}, 50)
-                                    })
+                                    OrderProfileLinks.moveLinkUp(link.id, link.order, foundLinkAbove?.id, foundLinkAbove?.order).then(() => {fetchLinks()})
                                 }}>Move Up</button>}
 
                                 {profileLinks.length === link.order ? "" : <button onClick={() => {
-                                    OrderProfileLinks.moveLinkDown(link.id, link.order, foundLinkBelow?.id, foundLinkBelow?.order).then(() => { setTimeout(() => {fetchLinks()}, 50) 
-                                    })
+                                    OrderProfileLinks.moveLinkDown(link.id, link.order, foundLinkBelow?.id, foundLinkBelow?.order).then(() => {fetchLinks()}) 
                                 }}>Move Down</button>}
 
                             </li>
