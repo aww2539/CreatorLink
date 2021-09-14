@@ -29,6 +29,12 @@
       "password": "coach",
       "name": "Coach",
       "id": 5
+    },
+    {
+      "email": "woody@woody.com",
+      "password": "woody",
+      "name": "Woody Account 2",
+      "id": 6
     }
   ],
   "posts": [
@@ -107,6 +113,11 @@
       "userId": 5,
       "bio": "Hi guys I'm Coach Steve at NSS",
       "id": 5
+    },
+    {
+      "userId": 6,
+      "bio": "Test Bio For Test Account",
+      "id": 6
     }
   ],
   "profileLinks": [
