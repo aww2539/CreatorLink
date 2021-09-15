@@ -35,6 +35,12 @@
       "password": "woody",
       "name": "Woody Account 2",
       "id": 6
+    },
+    {
+      "email": "weswey@weswey.com",
+      "password": "weswey",
+      "name": "weswey",
+      "id": 7
     }
   ],
   "posts": [
@@ -86,6 +92,13 @@
       "createdAt": 1631642777857,
       "edited": false,
       "id": 11
+    },
+    {
+      "userId": 7,
+      "body": "hello losers",
+      "createdAt": 1631667503285,
+      "edited": true,
+      "id": 12
     }
   ],
   "profiles": [
@@ -118,12 +131,17 @@
       "userId": 6,
       "bio": "Test Bio For Test Account",
       "id": 6
+    },
+    {
+      "userId": 7,
+      "bio": "",
+      "id": 7
     }
   ],
   "profileLinks": [
     {
       "profileId": 1,
-      "order": 4,
+      "order": 1,
       "show": true,
       "url": "https://www.twitter.com/its_woodyyyy",
       "title": "Twitter",
@@ -132,7 +150,7 @@
     },
     {
       "profileId": 1,
-      "order": 5,
+      "order": 2,
       "show": true,
       "url": "https://www.youtube.com/c/Woodyyyy",
       "title": "YouTube",
@@ -168,16 +186,7 @@
     },
     {
       "profileId": 1,
-      "order": 1,
-      "show": true,
-      "title": "TikTok",
-      "url": "https://www.tiktok.com",
-      "description": "TikTok",
-      "id": 6
-    },
-    {
-      "profileId": 1,
-      "order": 2,
+      "order": 4,
       "show": true,
       "title": "Instagram",
       "url": "https://www.instagram.com",
@@ -230,5 +239,48 @@
       "id": 16
     }
   ],
-  "follows": []
+  "analytics": [
+    {
+      "profileLinkId": 1,
+      "clicks": 1,
+      "id": 1
+    },
+    {
+      "profileLinkId": 2,
+      "clicks": 4,
+      "id": 2
+    }
+  ],
+  "follows": [
+    {
+      "userId": 3,
+      "idOfUserFollowed": 1,
+      "id": 2
+    },
+    {
+      "userId": 2,
+      "idOfUserFollowed": 1,
+      "id": 3
+    },
+    {
+      "userId": 4,
+      "idOfUserFollowed": 2,
+      "id": 8
+    },
+    {
+      "userId": 4,
+      "idOfUserFollowed": 1,
+      "id": 10
+    },
+    {
+      "userId": 4,
+      "idOfUserFollowed": 3,
+      "id": 11
+    },
+    {
+      "userId": 1,
+      "idOfUserFollowed": 7,
+      "id": 12
+    }
+  ]
 }

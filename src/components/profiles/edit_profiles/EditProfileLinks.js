@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react/cjs/react.development";
-import { getCurrentUser, getProfileLinks } from "../../ApiManager";
+import { getCurrentUser, getProfileLinks } from "../../../ApiManager";
 import OrderProfileLinks from "./OrderProfileLinks";
 import "./EditProfiles.css"
 

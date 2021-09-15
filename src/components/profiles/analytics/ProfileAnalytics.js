@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import { getCurrentUser, getFollowCheck, getFollowCount, getFollowedProfiles, getProfileLinks } from "../../ApiManager"
-import "./Profiles.css"
+import { getCurrentUser, getProfileLinks } from "../../../ApiManager"
 
-export const MyProfile = () => {
+export const ProfileAnalytics = () => {
     const [profile, setProfile] = useState({})
     const [links, updateLinks] = useState([])
-    const [followerCount, updateFollowerCount] = useState([])
-    const [followingCount, updateFollowingCount] = useState([])
     const userId = getCurrentUser()
 
     useEffect(
@@ -27,30 +24,14 @@ export const MyProfile = () => {
         .then((data => {updateLinks(data)}))
     },[]
     )
-
-    useEffect(() => {
-        getFollowCount(userId)
-        .then((data) => {updateFollowerCount(data)})
-    },[])
-
-    useEffect(() => {
-        getFollowCheck(userId)
-        .then((data) => {updateFollowingCount(data)})
-    },[])
-
-
     
     return (
         <>
 
-        <Link className="edit__button" to={`/profile/My${userId}/edit`}><button>Edit Profile</button></Link>
-        <article className="profile">
-            <h2>Welcome to {profile.user?.name}'s CreatorLink!</h2>
+        <Link className="back__button" to={`/profile/My${userId}/edit`}><button>Back</button></Link>
+        <article className="analytics">
+            <h2>Analytics</h2>
             <h4>{profile.bio}</h4>
-
-            <div className="follow__counts">
-                <p>Following: {followingCount.length}</p><p>Followers: {followerCount.length}</p>
-            </div>
 
             <section className="profile__links">
                 {
@@ -58,7 +39,6 @@ export const MyProfile = () => {
                         {
                         return <div key={`link--${link.id}`}>
                                 <h3>{link.title}</h3>
-                                <p>{link.description}</p>
                                 <a href={link.url} target="_blank">{link.url}</a>
                             </div>
                         }

@@ -4,7 +4,8 @@ import { getCurrentUser } from "./ApiManager"
 import { CreatePost } from "./components/mainfeed/CreatePost"
 import { EditPost } from "./components/mainfeed/EditPost"
 import { NewsFeed } from "./components/mainfeed/Feed"
-import { EditProfile } from "./components/profiles/EditProfiles"
+import { ProfileAnalytics } from "./components/profiles/analytics/ProfileAnalytics"
+import { EditProfile } from "./components/profiles/edit_profiles/EditProfiles"
 import { MyProfile } from "./components/profiles/MyProfile"
 import { UserProfile } from "./components/profiles/UserProfiles"
 import { Search } from "./components/search/Search"
@@ -33,8 +34,11 @@ export const ApplicationViews = () => {
             <Route exact path={`/profile/My${userId}`}>
                 <MyProfile />
             </Route>
-                    <Route exact path={`/profile/${userId}/edit`}>
+                    <Route exact path={`/profile/My${userId}/edit`}>
                         <EditProfile />
+                    </Route>
+                    <Route exact path={`/profile/My${userId}/analytics`}>
+                        <ProfileAnalytics />
                     </Route>
 
             <Route exact path="/search">
