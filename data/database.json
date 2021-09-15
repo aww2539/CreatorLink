@@ -239,5 +239,23 @@
       "id": 16
     }
   ],
-  "follows": []
+  "analytics": [
+    {
+      "profileLinkId": 1,
+      "clicks": 1,
+      "id": 1
+    },
+    {
+      "profileLinkId": 2,
+      "clicks": 4,
+      "id": 2
+    }
+  ],
+  "follows": [
+    {
+      "userId": 1,
+      "idOfPersonFollowed": 2,
+      "id": 1
+    }
+  ]
 }

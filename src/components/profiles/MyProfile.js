@@ -29,7 +29,7 @@ export const MyProfile = () => {
     return (
         <>
 
-        <Link className="edit__button" to={`/profile/${userId}/edit`}><button>Edit Profile</button></Link>
+        <Link className="edit__button" to={`/profile/My${userId}/edit`}><button>Edit Profile</button></Link>
         <article className="profile">
             <h2>Welcome to {profile.user?.name}'s CreatorLink!</h2>
             <h4>{profile.bio}</h4>
