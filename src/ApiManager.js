@@ -28,7 +28,12 @@ export const getProfiles = async () => {
     return await res.json()
 }
 
-export const getFollowedProfiles = async (id) => {
+export const getFollowCount = async (id) => {
+    const res = await fetch(`http://localhost:8088/follows?idOfUserFollowed=${id}`)
+    return await res.json()
+}
+
+export const getFollowCheck = async (id) => {
     const res = await fetch(`http://localhost:8088/follows?userId=${id}`)
     return await res.json()
 }
