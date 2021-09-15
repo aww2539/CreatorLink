@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useState } from "react/cjs/react.development"
-import { getCurrentUser } from "../../ApiManager"
+import { getCurrentUser } from "../../../ApiManager"
 
 
 export const EditProfileBio = () => {

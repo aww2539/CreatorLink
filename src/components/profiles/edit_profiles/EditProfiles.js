@@ -1,7 +1,5 @@
-import { useEffect } from "react"
 import { Link } from "react-router-dom"
-import { useState } from "react/cjs/react.development"
-import { getCurrentUser, getProfileLinks } from "../../ApiManager"
+import { getCurrentUser } from "../../../ApiManager"
 import { EditProfileBio } from "./EditProfileBio"
 import { EditProfileLinks } from "./EditProfileLinks"
 import "./EditProfiles.css"
