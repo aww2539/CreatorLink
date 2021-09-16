@@ -99,13 +99,20 @@
       "createdAt": 1631667503285,
       "edited": true,
       "id": 12
+    },
+    {
+      "userId": 1,
+      "body": "Blah Blah Blah",
+      "createdAt": 1631817767223,
+      "edited": false,
+      "id": 13
     }
   ],
   "profiles": [
     {
       "userId": 1,
       "bio": "Test Update",
-      "clicks": 2,
+      "clicks": 5,
       "id": 1
     },
     {
@@ -123,13 +130,13 @@
     {
       "userId": 4,
       "bio": "hi",
-      "clicks": 3,
+      "clicks": 4,
       "id": 4
     },
     {
       "userId": 5,
       "bio": "Hi guys I'm Coach Steve at NSS",
-      "clicks": 0,
+      "clicks": 2,
       "id": 5
     },
     {
@@ -141,7 +148,7 @@
     {
       "userId": 7,
       "bio": "",
-      "clicks": 0,
+      "clicks": 3,
       "id": 7
     }
   ],
@@ -163,7 +170,7 @@
       "url": "https://www.youtube.com/c/Woodyyyy",
       "title": "YouTube",
       "description": "My YouTube!",
-      "clicks": 0,
+      "clicks": 1,
       "id": 2
     },
     {
@@ -253,7 +260,7 @@
       "title": "NSS",
       "url": "https://nashvillesoftwareschool.com/",
       "description": "NSS homepage",
-      "clicks": 2,
+      "clicks": 3,
       "id": 16
     }
   ],
@@ -261,6 +268,7 @@
     {
       "profileId": 1,
       "twitter": "its_woodyyyy",
+      "youtube": "UCGXET3gFu4dG1LJsm_obdog",
       "id": 1
     }
   ],
@@ -282,11 +290,6 @@
     },
     {
       "userId": 4,
-      "idOfUserFollowed": 1,
-      "id": 10
-    },
-    {
-      "userId": 4,
       "idOfUserFollowed": 3,
       "id": 11
     },
@@ -301,9 +304,14 @@
       "id": 15
     },
     {
+      "userId": 4,
+      "idOfUserFollowed": 1,
+      "id": 17
+    },
+    {
       "userId": 1,
       "idOfUserFollowed": 5,
-      "id": 16
+      "id": 18
     }
   ]
 }

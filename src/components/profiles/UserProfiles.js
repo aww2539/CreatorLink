@@ -135,6 +135,10 @@ export const UserProfile = () => {
                                     />
                                     : ""
                                 }
+                                {embed !== undefined && link.title.toLowerCase() === "youtube" ? 
+                                    ""
+                                    : ""
+                                }
                             </div>
                         }
                     })

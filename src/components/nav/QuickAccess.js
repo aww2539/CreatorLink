@@ -22,7 +22,7 @@ export const QuickAccess = () => {
     useEffect(() => {
         getFollowCheck(currentUser)
         .then((data) => {updateFollowing(data)})
-    },[profiles])
+    },[])
 
     useEffect(() => {
         let arr = []
