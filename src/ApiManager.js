@@ -18,8 +18,8 @@ export const getProfileLinks = async (id) => {
     return await res.json()
 }
 
-export const getLinkAnalytics = async (id) => {
-    const res = await fetch(`http://localhost:8088/analytics?profileLinkId=${id}`)
+export const getUserProfile = async (id) => {
+    const res = await fetch(`http://localhost:8088/profiles?_expand=user&userId=${id}`)
     return await res.json()
 }
 
@@ -37,4 +37,10 @@ export const getFollowCheck = async (id) => {
     const res = await fetch(`http://localhost:8088/follows?userId=${id}`)
     return await res.json()
 }
+
+export const getUsernamesForEmbeddedFeeds = async (id) => {
+    const res = await fetch(`http://localhost:8088/embeddedFeeds?profileId=${id}`)
+    return await res.json()
+}
+
 

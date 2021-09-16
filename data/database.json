@@ -99,42 +99,56 @@
       "createdAt": 1631667503285,
       "edited": true,
       "id": 12
+    },
+    {
+      "userId": 1,
+      "body": "Blah Blah Blah",
+      "createdAt": 1631817767223,
+      "edited": false,
+      "id": 13
     }
   ],
   "profiles": [
     {
       "userId": 1,
       "bio": "Test Update",
+      "clicks": 5,
       "id": 1
     },
     {
       "userId": 2,
       "bio": "Sunless bio update test 1",
+      "clicks": 0,
       "id": 2
     },
     {
       "userId": 3,
       "bio": "HI IM JOSH",
+      "clicks": 0,
       "id": 3
     },
     {
       "userId": 4,
       "bio": "hi",
+      "clicks": 4,
       "id": 4
     },
     {
       "userId": 5,
       "bio": "Hi guys I'm Coach Steve at NSS",
+      "clicks": 2,
       "id": 5
     },
     {
       "userId": 6,
       "bio": "Test Bio For Test Account",
+      "clicks": 0,
       "id": 6
     },
     {
       "userId": 7,
       "bio": "",
+      "clicks": 3,
       "id": 7
     }
   ],
@@ -146,6 +160,7 @@
       "url": "https://www.twitter.com/its_woodyyyy",
       "title": "Twitter",
       "description": "My Twitter!",
+      "clicks": 1,
       "id": 1
     },
     {
@@ -155,6 +170,7 @@
       "url": "https://www.youtube.com/c/Woodyyyy",
       "title": "YouTube",
       "description": "My YouTube!",
+      "clicks": 1,
       "id": 2
     },
     {
@@ -164,6 +180,7 @@
       "url": "https://www.twitch.tv/its_woodyyyy",
       "title": "Twitch",
       "description": "My Twitch!",
+      "clicks": 1,
       "id": 3
     },
     {
@@ -173,6 +190,7 @@
       "url": "https://www.youtube.com/c/SunlessKhan",
       "title": "Sunless's YouTube Channel",
       "description": "Go sub!",
+      "clicks": 0,
       "id": 4
     },
     {
@@ -182,6 +200,7 @@
       "title": "sunless test link 1",
       "url": "sunless test url 1",
       "description": "test 1",
+      "clicks": 0,
       "id": 5
     },
     {
@@ -191,6 +210,7 @@
       "title": "Instagram",
       "url": "https://www.instagram.com",
       "description": "Instagram",
+      "clicks": 0,
       "id": 7
     },
     {
@@ -200,6 +220,7 @@
       "title": "First Link",
       "url": "https://www.google.com",
       "description": "GOOGLE",
+      "clicks": 0,
       "id": 8
     },
     {
@@ -209,6 +230,7 @@
       "title": "Second Link",
       "url": "https://www.msn.com",
       "description": "MSN BABY",
+      "clicks": 0,
       "id": 13
     },
     {
@@ -218,6 +240,7 @@
       "title": "NSS Homepage",
       "url": "https://nashvillesoftwareschool.com/",
       "description": "NSS",
+      "clicks": 0,
       "id": 14
     },
     {
@@ -227,6 +250,7 @@
       "title": "Google",
       "url": "https://google.com/",
       "description": "Google Homepage",
+      "clicks": 0,
       "id": 15
     },
     {
@@ -236,19 +260,16 @@
       "title": "NSS",
       "url": "https://nashvillesoftwareschool.com/",
       "description": "NSS homepage",
+      "clicks": 3,
       "id": 16
     }
   ],
-  "analytics": [
+  "embeddedFeeds": [
     {
-      "profileLinkId": 1,
-      "clicks": 1,
+      "profileId": 1,
+      "twitter": "its_woodyyyy",
+      "youtube": "UCGXET3gFu4dG1LJsm_obdog",
       "id": 1
-    },
-    {
-      "profileLinkId": 2,
-      "clicks": 4,
-      "id": 2
     }
   ],
   "follows": [
@@ -269,18 +290,28 @@
     },
     {
       "userId": 4,
-      "idOfUserFollowed": 1,
-      "id": 10
-    },
-    {
-      "userId": 4,
       "idOfUserFollowed": 3,
       "id": 11
     },
     {
       "userId": 1,
-      "idOfUserFollowed": 7,
-      "id": 12
+      "idOfUserFollowed": 4,
+      "id": 13
+    },
+    {
+      "userId": 1,
+      "idOfUserFollowed": 3,
+      "id": 15
+    },
+    {
+      "userId": 4,
+      "idOfUserFollowed": 1,
+      "id": 17
+    },
+    {
+      "userId": 1,
+      "idOfUserFollowed": 5,
+      "id": 18
     }
   ]
 }
