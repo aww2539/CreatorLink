@@ -5,6 +5,7 @@ import { CloudinaryContext, Image } from 'cloudinary-react';
 import { TwitterTimelineEmbed } from 'react-twitter-embed';
 import Follow from "./Follow";
 import "./Profiles.css"
+import Analytics from "./analytics/Analytics";
 
 
 export const UserProfile = () => {
@@ -34,9 +35,13 @@ export const UserProfile = () => {
         [profileId]
     )
 
-    useEffect(() => {
+    const fetchLinks = () => {
         getProfileLinks(profileId)
         .then((data => {updateLinks(data)}))
+    }
+
+    useEffect(() => {
+        fetchLinks()
     },[profileId]
     )
 
@@ -117,7 +122,11 @@ export const UserProfile = () => {
                         return <div key={`link--${link.id}`} className="profile__links">
                                 <h3>{link.title}</h3>
                                 <p>{link.description}</p>
-                                <a href={link.url} target="_blank">{link.url}</a>
+                                <a href={link.url} target="_blank" onClick={() => {
+                                        Analytics.addLinkClick(link.id, link.clicks)
+                                        .then(() => {fetchLinks()})}}>
+                                    {link.url}
+                                </a>
                                 {embed !== undefined && link.title === "Twitter" ? 
                                     <TwitterTimelineEmbed
                                     sourceType="profile"

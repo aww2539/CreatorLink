@@ -31,14 +31,14 @@ export const ProfileAnalytics = () => {
         <Link className="back__button" to={`/profile/My${userId}/edit`}><button>Back</button></Link>
         <article className="analytics">
             <h2>Analytics</h2>
-            <h4>{profile.bio}</h4>
+            <h4>Profile Clicks: {profile?.clicks}</h4>
 
             <section className="profile__links">
                 {
                     links.map((link) => {
                         {
                         return <div key={`link--${link.id}`}>
-                                <h3>{link.title}</h3>
+                                <h3>{link.title} - Link Clicks: {link.clicks}</h3>
                                 <a href={link.url} target="_blank">{link.url}</a>
                             </div>
                         }

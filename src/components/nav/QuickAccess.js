@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { getCurrentUser, getFollowCheck, getProfiles } from "../../ApiManager"
+import Analytics from "../profiles/analytics/Analytics"
 import "./Nav.css"
 
 export const QuickAccess = () => {
@@ -9,15 +10,19 @@ export const QuickAccess = () => {
     const [followedProfiles, updateFollowedProfiles] = useState([])
     const currentUser = getCurrentUser()
 
-    useEffect(() => {
+    const fetchProfiles = () => {
         getProfiles()
         .then((data) => {updateProfiles(data)})
+    }
+
+    useEffect(() => {
+        fetchProfiles()
     },[])
 
     useEffect(() => {
         getFollowCheck(currentUser)
         .then((data) => {updateFollowing(data)})
-    },[])
+    },[profiles])
 
     useEffect(() => {
         let arr = []
@@ -39,7 +44,11 @@ export const QuickAccess = () => {
                 return <div className="quickAccess">
                             <ul className="quickAccess_list">
                                 <li className="quickAccess__item active">
-                                    <Link className="quickAccess__link" to={`/profile/${profile.id}`}>{profile.user.name}</Link>
+                                    <Link className="quickAccess__link" to={`/profile/${profile.id}`} onClick={() => {
+                                        Analytics.addProfileClick(profile.id, profile.clicks)
+                                        .then(() => {fetchProfiles()})}}>
+                                        {profile.user.name}
+                                    </Link>
                                 </li>
                             </ul>
                         </div>
