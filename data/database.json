@@ -112,7 +112,7 @@
     {
       "userId": 1,
       "bio": "Test Update",
-      "clicks": 5,
+      "clicks": 6,
       "id": 1
     },
     {
@@ -124,25 +124,25 @@
     {
       "userId": 3,
       "bio": "HI IM JOSH",
-      "clicks": 0,
+      "clicks": 6,
       "id": 3
     },
     {
       "userId": 4,
       "bio": "hi",
-      "clicks": 4,
+      "clicks": 11,
       "id": 4
     },
     {
       "userId": 5,
       "bio": "Hi guys I'm Coach Steve at NSS",
-      "clicks": 2,
+      "clicks": 9,
       "id": 5
     },
     {
       "userId": 6,
       "bio": "Test Bio For Test Account",
-      "clicks": 0,
+      "clicks": 1,
       "id": 6
     },
     {
@@ -294,16 +294,6 @@
       "id": 11
     },
     {
-      "userId": 1,
-      "idOfUserFollowed": 4,
-      "id": 13
-    },
-    {
-      "userId": 1,
-      "idOfUserFollowed": 3,
-      "id": 15
-    },
-    {
       "userId": 4,
       "idOfUserFollowed": 1,
       "id": 17
@@ -311,7 +301,17 @@
     {
       "userId": 1,
       "idOfUserFollowed": 5,
-      "id": 18
+      "id": 22
+    },
+    {
+      "userId": 1,
+      "idOfUserFollowed": 4,
+      "id": 23
+    },
+    {
+      "userId": 1,
+      "idOfUserFollowed": 3,
+      "id": 24
     }
   ]
 }

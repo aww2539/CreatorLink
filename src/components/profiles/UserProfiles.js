@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useParams } from "react-router"
 import { getCurrentUser, getFollowCheck, getFollowCount, getProfileLinks, getUsernamesForEmbeddedFeeds } from "../../ApiManager"
 import { CloudinaryContext, Image } from 'cloudinary-react';
@@ -6,15 +6,23 @@ import { TwitterTimelineEmbed } from 'react-twitter-embed';
 import Follow from "./Follow";
 import "./Profiles.css"
 import Analytics from "./analytics/Analytics";
+import { FollowerContext } from "../provider/FollowerProvider";
 
 
 export const UserProfile = () => {
     const [profile, setProfile] = useState({})
     const [links, updateLinks] = useState([])
 
-    const [followers, updateFollowers] = useState([])
-    const [following, updateFollowing] = useState([])
+    const [profileFollowers, updateFollowers] = useState([])
+    const [profileFollowing, updateFollowing] = useState([])
     const [followingCheck, updateFollowingCheck] = useState([])
+
+
+
+    const { follows, getFollows, followers, getFollowers, followUser, unfollowUser } = useContext(FollowerContext)
+
+
+
     const [followCheckState, setFollowCheckState] = useState()
     const [unfollowObject, setUnfollowObject] = useState({})
 
@@ -46,12 +54,12 @@ export const UserProfile = () => {
     )
 
     const updateProfileFollowerCount = () => {
-        getFollowCount(profileId)
+        getFollowers(profileId)
         .then((data) => {updateFollowers(data)})
     }
 
     const updateProfileFollowingCount = () => {
-        getFollowCheck(profileId)
+        getFollows(profileId)
         .then((data) => {updateFollowing(data)})
     }
 
@@ -91,12 +99,12 @@ export const UserProfile = () => {
             { followCheckState === true ?
 
                 <button className="follow__button" onClick={() => {
-                    Follow.unfollowUser(parseInt(unfollowObject?.id))
+                    unfollowUser(parseInt(unfollowObject?.id))
                     .then(() => {updateProfileFollowerCount()})}}
                     >Unfollow</button>
 
                 : <button className="follow__button" onClick={() => {
-                    Follow.followUser(parseInt(currentUser), parseInt(profileId))
+                    followUser(parseInt(currentUser), parseInt(profileId))
                     .then(() => {updateProfileFollowerCount()})}}
                     >Follow</button>
             }
@@ -112,7 +120,7 @@ export const UserProfile = () => {
             <h4>{profile.bio}</h4>
 
             <div className="follow__counts">
-                <p>Following: {following.length}</p><p>Followers: {followers.length}</p>
+                <p>Following: {follows.length}</p><p>Followers: {followers.length}</p>
             </div>
 
             <section className="profile__links">

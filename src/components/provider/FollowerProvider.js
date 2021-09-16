@@ -1,4 +1,5 @@
 import React, { useState, createContext } from "react"
+import { getCurrentUser } from "../../ApiManager"
 
 // The context is imported and used by individual components that need data
 export const FollowerContext = createContext()
@@ -6,11 +7,19 @@ export const FollowerContext = createContext()
 // This component establishes what data can be used.
 export const FollowerProvider = (props) => {
     const [follows, setFollows] = useState([])
+    const [followers, setFollowers] = useState([])
+    const currentUser = getCurrentUser()
 
     const getFollows = (id) => {
         return fetch(`http://localhost:8088/follows?userId=${id}`)
         .then(res => res.json())
         .then(setFollows)
+    }
+
+    const getFollowers = (id) => {
+        return fetch(`http://localhost:8088/follows?idOfUserFollowed=${id}`)
+        .then(res => res.json())
+        .then(setFollowers)
     }
 
     const followUser = (userId, idOfUserFollowed) => {
@@ -29,6 +38,7 @@ export const FollowerProvider = (props) => {
         }
 
         return fetch(`http://localhost:8088/follows`, fetchOption)
+            .then(() => {return getFollows(parseInt(currentUser))})
     }
 
     const unfollowUser = (id) => {
@@ -36,21 +46,15 @@ export const FollowerProvider = (props) => {
         return fetch(`http://localhost:8088/follows/${id}`, {
             method: "DELETE"
         })
+        .then(() => {return getFollows(parseInt(currentUser))})
 
     }
 
-    /*
-        You return a context provider which has the
-        `animals` state, `getAnimals` function,
-        and the `addAnimal` function as keys. This
-        allows any child elements to access them.
-    */
-
     return (
-        <FollowContext.Provider value={{
-            follows, getFollows, followUser, unfollowUser
+        <FollowerContext.Provider value={{
+            follows, getFollows, followers, getFollowers, followUser, unfollowUser
         }}>
             {props.children}
-        </FollowContext.Provider>
+        </FollowerContext.Provider>
     )
 }

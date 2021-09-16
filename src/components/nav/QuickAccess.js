@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { getCurrentUser, getFollowCheck, getProfiles } from "../../ApiManager"
 import Analytics from "../profiles/analytics/Analytics"
+import { FollowerContext } from "../provider/FollowerProvider"
 import "./Nav.css"
 
 export const QuickAccess = () => {
     const [profiles, updateProfiles] = useState([])
     const [following, updateFollowing] = useState([])
     const [followedProfiles, updateFollowedProfiles] = useState([])
+    const { follows  } = useContext(FollowerContext)
     const currentUser = getCurrentUser()
 
     const fetchProfiles = () => {
@@ -22,7 +24,7 @@ export const QuickAccess = () => {
     useEffect(() => {
         getFollowCheck(currentUser)
         .then((data) => {updateFollowing(data)})
-    },[])
+    },[follows])
 
     useEffect(() => {
         let arr = []
