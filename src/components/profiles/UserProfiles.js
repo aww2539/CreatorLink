@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router"
-import { getCurrentUser, getFollowCheck, getFollowCount, getProfileLinks } from "../../ApiManager"
+import { getCurrentUser, getFollowCheck, getFollowCount, getProfileLinks, getUsernamesForEmbeddedFeeds } from "../../ApiManager"
 import { CloudinaryContext, Image } from 'cloudinary-react';
+import { TwitterTimelineEmbed } from 'react-twitter-embed';
 import Follow from "./Follow";
+import "./Profiles.css"
 
 
 export const UserProfile = () => {
@@ -18,6 +20,7 @@ export const UserProfile = () => {
     const currentUser = getCurrentUser()
     const { profileId } = useParams()
     
+    const [embed, updateEmbed] = useState({})
 
     useEffect(
         () => {
@@ -46,6 +49,12 @@ export const UserProfile = () => {
         getFollowCheck(profileId)
         .then((data) => {updateFollowing(data)})
     }
+
+    useEffect(() => {
+        getUsernamesForEmbeddedFeeds(profileId)
+        .then((data => {updateEmbed(...data)}))
+    },[profile]
+    )
 
     useEffect(() => {
         updateProfileFollowerCount()
@@ -105,15 +114,24 @@ export const UserProfile = () => {
                 {
                     links.map((link) => {
                         {
-                        return <div key={`link--${link.id}`}>
+                        return <div key={`link--${link.id}`} className="profile__links">
                                 <h3>{link.title}</h3>
                                 <p>{link.description}</p>
                                 <a href={link.url} target="_blank">{link.url}</a>
+                                {embed !== undefined && link.title === "Twitter" ? 
+                                    <TwitterTimelineEmbed
+                                    sourceType="profile"
+                                    screenName={`${embed.twitter}`}
+                                    options={{height: 400}}
+                                    />
+                                    : ""
+                                }
                             </div>
                         }
                     })
                         
                 }
+
             </section>
         </article>
 

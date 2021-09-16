@@ -239,6 +239,13 @@
       "id": 16
     }
   ],
+  "embeddedFeeds": [
+    {
+      "profileId": 1,
+      "twitter": "its_woodyyyy",
+      "id": 1
+    }
+  ],
   "analytics": [
     {
       "profileLinkId": 1,
@@ -279,8 +286,18 @@
     },
     {
       "userId": 1,
-      "idOfUserFollowed": 7,
-      "id": 12
+      "idOfUserFollowed": 4,
+      "id": 13
+    },
+    {
+      "userId": 1,
+      "idOfUserFollowed": 3,
+      "id": 15
+    },
+    {
+      "userId": 1,
+      "idOfUserFollowed": 5,
+      "id": 16
     }
   ]
 }
