@@ -6,9 +6,16 @@ export const FollowerContext = createContext()
 
 // This component establishes what data can be used.
 export const FollowerProvider = (props) => {
+    const [profiles, setProfiles] = useState([])
     const [followings, setFollowings] = useState([])
     const [followers, setFollowers] = useState([])
     const [quickAccessFollowings, setQuickAccessFollowings] = useState([])
+
+    const getProfiles = () => {
+        return fetch(`http://localhost:8088/profiles?_expand=user`)
+        .then(res => res.json())
+        .then(setProfiles)
+    }
 
     const getFollowings = (id) => {
         return fetch(`http://localhost:8088/follows?userId=${id}`)
@@ -56,7 +63,7 @@ export const FollowerProvider = (props) => {
 
     return (
         <FollowerContext.Provider value={{
-            followings, getFollowings, followers, getFollowers, quickAccessFollowings, getQuickAccessFollowings, followUser, unfollowUser
+           profiles, getProfiles, followings, getFollowings, followers, getFollowers, quickAccessFollowings, getQuickAccessFollowings, followUser, unfollowUser
         }}>
             {props.children}
         </FollowerContext.Provider>

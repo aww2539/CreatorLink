@@ -1,24 +1,24 @@
 import React, { useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import { getCurrentUser, getFollowCheck, getProfiles } from "../../ApiManager"
+import { getCurrentUser } from "../../ApiManager"
 import Analytics from "../profiles/analytics/Analytics"
 import { FollowerContext } from "../provider/FollowerProvider"
 import "./Nav.css"
 
 export const QuickAccess = () => {
-    const [profiles, updateProfiles] = useState([])
+    const [profilesState, updateProfilesState] = useState([])
     const [followedProfiles, updateFollowedProfiles] = useState([])
-    const { quickAccessFollowings, getQuickAccessFollowings  } = useContext(FollowerContext)
+    const { quickAccessFollowings, getQuickAccessFollowings, profiles, getProfiles } = useContext(FollowerContext)
     const currentUser = getCurrentUser()
 
-    const fetchProfiles = async () => {
-        const data = await getProfiles()
-        updateProfiles(data)
+    const fetchProfiles = () => {
+        return getProfiles()
+        .then(updateProfilesState(profiles))
     }
 
     useEffect(() => {
         fetchProfiles()
-    },[])
+    },[profilesState])
 
     useEffect(() => {
         return getQuickAccessFollowings(currentUser)

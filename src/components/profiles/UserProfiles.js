@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
 import { useParams } from "react-router"
 import { getCurrentUser, getProfileLinks, getUsernamesForEmbeddedFeeds } from "../../ApiManager"
 import { TwitterTimelineEmbed } from 'react-twitter-embed';
@@ -7,12 +7,16 @@ import Analytics from "./analytics/Analytics";
 import { FollowerContext } from "../provider/FollowerProvider";
 
 
+
+
+
 export const UserProfile = () => {
     const [profile, setProfile] = useState({})
     const [links, updateLinks] = useState([])
     const [embed, updateEmbed] = useState({})
     const currentUser = getCurrentUser()
     const { profileId } = useParams()
+    const youtubeSubscribeNode = useRef()
 
     const { followings, getFollowings, followers, getFollowers, getQuickAccessFollowings, followUser, unfollowUser } = useContext(FollowerContext)
 
@@ -28,6 +32,13 @@ export const UserProfile = () => {
                 })
         },[profileId]
     )
+
+    useEffect(() => {
+        const youtubescript = document.createElement("script");
+        youtubescript.src = "https://apis.google.com/js/platform.js";
+        youtubescript.async = true
+        document.body.appendChild(youtubescript);
+    }, [])
 
     const fetchLinks = () => {
         getProfileLinks(profileId)
@@ -70,7 +81,16 @@ export const UserProfile = () => {
         }
     },[followers])
 
-    console.log(followCheckState);
+    const createYouTubeButton = (embedId) => {
+        const customAttributes = {
+            "data-channelid": embedId,
+            "data-layout": "default",
+            "data-count": "default"
+        }
+    return <div className="g-ytsubscribe" ref={youtubeSubscribeNode} {...customAttributes}></div>
+
+    }
+
 
     return (
         <>
@@ -123,8 +143,8 @@ export const UserProfile = () => {
                                     />
                                     : ""
                                 }
-                                {embed !== undefined && link.title.toLowerCase() === "youtube" ? 
-                                    ""
+                                {embed !== undefined && link.title === "YouTube" ? 
+                                    createYouTubeButton(embed?.youtube)
                                     : ""
                                 }
                             </div>
@@ -132,7 +152,6 @@ export const UserProfile = () => {
                     })
                         
                 }
-
             </section>
         </article>
 
