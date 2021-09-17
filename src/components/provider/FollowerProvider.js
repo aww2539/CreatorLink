@@ -1,16 +1,31 @@
 import React, { useState, createContext } from "react"
+import { getCurrentUser } from "../../ApiManager"
 
 // The context is imported and used by individual components that need data
 export const FollowerContext = createContext()
 
 // This component establishes what data can be used.
 export const FollowerProvider = (props) => {
-    const [follows, setFollows] = useState([])
+    const [followings, setFollowings] = useState([])
+    const [followers, setFollowers] = useState([])
+    const [quickAccessFollowings, setQuickAccessFollowings] = useState([])
 
-    const getFollows = (id) => {
+    const getFollowings = (id) => {
         return fetch(`http://localhost:8088/follows?userId=${id}`)
         .then(res => res.json())
-        .then(setFollows)
+        .then(setFollowings)
+    }
+
+    const getFollowers = (id) => {
+        return fetch(`http://localhost:8088/follows?idOfUserFollowed=${id}`)
+        .then(res => res.json())
+        .then(setFollowers)
+    }
+
+    const getQuickAccessFollowings = (id) => {
+        return fetch(`http://localhost:8088/follows?userId=${id}`)
+        .then(res => res.json())
+        .then(setQuickAccessFollowings)
     }
 
     const followUser = (userId, idOfUserFollowed) => {
@@ -39,18 +54,11 @@ export const FollowerProvider = (props) => {
 
     }
 
-    /*
-        You return a context provider which has the
-        `animals` state, `getAnimals` function,
-        and the `addAnimal` function as keys. This
-        allows any child elements to access them.
-    */
-
     return (
-        <FollowContext.Provider value={{
-            follows, getFollows, followUser, unfollowUser
+        <FollowerContext.Provider value={{
+            followings, getFollowings, followers, getFollowers, quickAccessFollowings, getQuickAccessFollowings, followUser, unfollowUser
         }}>
             {props.children}
-        </FollowContext.Provider>
+        </FollowerContext.Provider>
     )
 }

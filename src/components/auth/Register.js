@@ -29,7 +29,7 @@ export const Register = (props) => {
                         .then(createdUser => {
                             if (createdUser.hasOwnProperty("id")) {
                                 localStorage.setItem("creatorLink_user", createdUser.id)
-                                const newProfile = { userId: createdUser.id, bio: "" }
+                                const newProfile = { userId: createdUser.id, bio: "", clicks: 0 }
                         
                                 const fetchOption = {
                                     method: "POST",

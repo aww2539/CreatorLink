@@ -1,18 +1,19 @@
-import React, { useEffect, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { getCurrentUser, getFollowCheck, getProfiles } from "../../ApiManager"
 import Analytics from "../profiles/analytics/Analytics"
+import { FollowerContext } from "../provider/FollowerProvider"
 import "./Nav.css"
 
 export const QuickAccess = () => {
     const [profiles, updateProfiles] = useState([])
-    const [following, updateFollowing] = useState([])
     const [followedProfiles, updateFollowedProfiles] = useState([])
+    const { quickAccessFollowings, getQuickAccessFollowings  } = useContext(FollowerContext)
     const currentUser = getCurrentUser()
 
-    const fetchProfiles = () => {
-        getProfiles()
-        .then((data) => {updateProfiles(data)})
+    const fetchProfiles = async () => {
+        const data = await getProfiles()
+        updateProfiles(data)
     }
 
     useEffect(() => {
@@ -20,20 +21,19 @@ export const QuickAccess = () => {
     },[])
 
     useEffect(() => {
-        getFollowCheck(currentUser)
-        .then((data) => {updateFollowing(data)})
+        return getQuickAccessFollowings(currentUser)
     },[])
 
     useEffect(() => {
         let arr = []
-        for (const follow of following) {
+        for (const follow of quickAccessFollowings) {
             const foundProfile = profiles.find(profile => profile.id === follow?.idOfUserFollowed)
             if (foundProfile !== undefined) {
                 arr.push(foundProfile)
             }
         }
         updateFollowedProfiles(arr)
-    },[following])
+    },[quickAccessFollowings])
 
 
     return (
