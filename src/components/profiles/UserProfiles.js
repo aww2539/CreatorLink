@@ -1,9 +1,7 @@
 import { useContext, useEffect, useState } from "react"
 import { useParams } from "react-router"
-import { getCurrentUser, getFollowCheck, getFollowCount, getProfileLinks, getUsernamesForEmbeddedFeeds } from "../../ApiManager"
-import { CloudinaryContext, Image } from 'cloudinary-react';
+import { getCurrentUser, getProfileLinks, getUsernamesForEmbeddedFeeds } from "../../ApiManager"
 import { TwitterTimelineEmbed } from 'react-twitter-embed';
-import Follow from "./Follow";
 import "./Profiles.css"
 import Analytics from "./analytics/Analytics";
 import { FollowerContext } from "../provider/FollowerProvider";
@@ -12,24 +10,14 @@ import { FollowerContext } from "../provider/FollowerProvider";
 export const UserProfile = () => {
     const [profile, setProfile] = useState({})
     const [links, updateLinks] = useState([])
-
-    const [profileFollowers, updateFollowers] = useState([])
-    const [profileFollowing, updateFollowing] = useState([])
-    const [followingCheck, updateFollowingCheck] = useState([])
-
-
-
-    const { follows, getFollows, followers, getFollowers, followUser, unfollowUser } = useContext(FollowerContext)
-
-
-
-    const [followCheckState, setFollowCheckState] = useState()
-    const [unfollowObject, setUnfollowObject] = useState({})
-
+    const [embed, updateEmbed] = useState({})
     const currentUser = getCurrentUser()
     const { profileId } = useParams()
+
+    const { followings, getFollowings, followers, getFollowers, getQuickAccessFollowings, followUser, unfollowUser } = useContext(FollowerContext)
+
+    const [followCheckState, setFollowCheckState] = useState({})
     
-    const [embed, updateEmbed] = useState({})
 
     useEffect(
         () => {
@@ -38,9 +26,7 @@ export const UserProfile = () => {
                 .then((data) => {
                     setProfile(data)
                 })
-
-        },
-        [profileId]
+        },[profileId]
     )
 
     const fetchLinks = () => {
@@ -52,75 +38,69 @@ export const UserProfile = () => {
         fetchLinks()
     },[profileId]
     )
-
-    const updateProfileFollowerCount = () => {
-        getFollowers(profileId)
-        .then((data) => {updateFollowers(data)})
-    }
-
-    const updateProfileFollowingCount = () => {
-        getFollows(profileId)
-        .then((data) => {updateFollowing(data)})
-    }
-
+    
     useEffect(() => {
         getUsernamesForEmbeddedFeeds(profileId)
         .then((data => {updateEmbed(...data)}))
-    },[profile]
+    },[profileId]
     )
+
+
+    const updateProfileFollowerCount = () => { return getFollowers(profileId) }
+
+    const updateProfileFollowingCount = () => { return getFollowings(profileId) }
+
+
 
     useEffect(() => {
         updateProfileFollowerCount()
-    },[profile])
+    },[profileId])
 
     useEffect(() => {
         updateProfileFollowingCount()
-    },[profile])
+    },[profileId])
 
     useEffect(() => {
-        getFollowCheck(currentUser)
-        .then((data) => {updateFollowingCheck(data)})
+        const followCheck = followers.find(f => f.userId === parseInt(currentUser) && f.idOfUserFollowed === parseInt(profileId))
+        if (followCheck !== undefined) {
+            setFollowCheckState(followCheck)
+            
+        } else {
+            setFollowCheckState(undefined)
+        }
     },[followers])
 
-    useEffect(() => {
-        const followCheck = !!followingCheck.find(f => f.userId === parseInt(currentUser) && f.idOfUserFollowed === parseInt(profileId))
-        setFollowCheckState(followCheck)
-    },[followingCheck])
-
-    useEffect(() => {
-        const unfollow = followingCheck.find(f => f.userId === parseInt(currentUser) && f.idOfUserFollowed === parseInt(profileId))
-        setUnfollowObject(unfollow)
-    },[followingCheck])
+    console.log(followCheckState);
 
     return (
         <>
         <article className="profile">
 
-            { followCheckState === true ?
+            { followCheckState !== undefined ?
 
                 <button className="follow__button" onClick={() => {
-                    unfollowUser(parseInt(unfollowObject?.id))
-                    .then(() => {updateProfileFollowerCount()})}}
+                    unfollowUser(parseInt(followCheckState?.id))
+                    .then(() => {
+                        updateProfileFollowerCount()
+                        .then(() => getQuickAccessFollowings(currentUser))
+                    })}}
                     >Unfollow</button>
 
                 : <button className="follow__button" onClick={() => {
                     followUser(parseInt(currentUser), parseInt(profileId))
-                    .then(() => {updateProfileFollowerCount()})}}
+                    .then(() => {
+                        updateProfileFollowerCount()
+                        .then(() => getQuickAccessFollowings(currentUser))
+                    })}}
                     >Follow</button>
             }
 
             <h2>Welcome to {profile.user?.name}'s CreatorLink!</h2>
-
-            <CloudinaryContext cloudName="creatorlink">
-                <div>
-                    <Image publicId="sample" width="50" />
-                </div>
-            </CloudinaryContext>
             
             <h4>{profile.bio}</h4>
 
             <div className="follow__counts">
-                <p>Following: {follows.length}</p><p>Followers: {followers.length}</p>
+                <p>Following: {followings.length}</p><p>Followers: {followers.length}</p>
             </div>
 
             <section className="profile__links">

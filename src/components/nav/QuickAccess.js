@@ -7,14 +7,13 @@ import "./Nav.css"
 
 export const QuickAccess = () => {
     const [profiles, updateProfiles] = useState([])
-    const [following, updateFollowing] = useState([])
     const [followedProfiles, updateFollowedProfiles] = useState([])
-    const { follows  } = useContext(FollowerContext)
+    const { quickAccessFollowings, getQuickAccessFollowings  } = useContext(FollowerContext)
     const currentUser = getCurrentUser()
 
-    const fetchProfiles = () => {
-        getProfiles()
-        .then((data) => {updateProfiles(data)})
+    const fetchProfiles = async () => {
+        const data = await getProfiles()
+        updateProfiles(data)
     }
 
     useEffect(() => {
@@ -22,20 +21,19 @@ export const QuickAccess = () => {
     },[])
 
     useEffect(() => {
-        getFollowCheck(currentUser)
-        .then((data) => {updateFollowing(data)})
-    },[follows])
+        return getQuickAccessFollowings(currentUser)
+    },[])
 
     useEffect(() => {
         let arr = []
-        for (const follow of following) {
+        for (const follow of quickAccessFollowings) {
             const foundProfile = profiles.find(profile => profile.id === follow?.idOfUserFollowed)
             if (foundProfile !== undefined) {
                 arr.push(foundProfile)
             }
         }
         updateFollowedProfiles(arr)
-    },[following])
+    },[quickAccessFollowings])
 
 
     return (

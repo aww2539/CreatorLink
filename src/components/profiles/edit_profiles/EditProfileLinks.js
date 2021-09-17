@@ -34,7 +34,8 @@ export const EditProfileLinks = () => {
             show: true,
             title: link.title,
             url: link.url,
-            description: link.description
+            description: link.description,
+            clicks: 0
         }
 
         const fetchOption = {

@@ -6,20 +6,26 @@ export const FollowerContext = createContext()
 
 // This component establishes what data can be used.
 export const FollowerProvider = (props) => {
-    const [follows, setFollows] = useState([])
+    const [followings, setFollowings] = useState([])
     const [followers, setFollowers] = useState([])
-    const currentUser = getCurrentUser()
+    const [quickAccessFollowings, setQuickAccessFollowings] = useState([])
 
-    const getFollows = (id) => {
+    const getFollowings = (id) => {
         return fetch(`http://localhost:8088/follows?userId=${id}`)
         .then(res => res.json())
-        .then(setFollows)
+        .then(setFollowings)
     }
 
     const getFollowers = (id) => {
         return fetch(`http://localhost:8088/follows?idOfUserFollowed=${id}`)
         .then(res => res.json())
         .then(setFollowers)
+    }
+
+    const getQuickAccessFollowings = (id) => {
+        return fetch(`http://localhost:8088/follows?userId=${id}`)
+        .then(res => res.json())
+        .then(setQuickAccessFollowings)
     }
 
     const followUser = (userId, idOfUserFollowed) => {
@@ -38,7 +44,6 @@ export const FollowerProvider = (props) => {
         }
 
         return fetch(`http://localhost:8088/follows`, fetchOption)
-            .then(() => {return getFollows(parseInt(currentUser))})
     }
 
     const unfollowUser = (id) => {
@@ -46,13 +51,12 @@ export const FollowerProvider = (props) => {
         return fetch(`http://localhost:8088/follows/${id}`, {
             method: "DELETE"
         })
-        .then(() => {return getFollows(parseInt(currentUser))})
 
     }
 
     return (
         <FollowerContext.Provider value={{
-            follows, getFollows, followers, getFollowers, followUser, unfollowUser
+            followings, getFollowings, followers, getFollowers, quickAccessFollowings, getQuickAccessFollowings, followUser, unfollowUser
         }}>
             {props.children}
         </FollowerContext.Provider>
