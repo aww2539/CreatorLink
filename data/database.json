@@ -144,19 +144,19 @@
     {
       "userId": 1,
       "bio": "Test Update",
-      "clicks": 48,
+      "clicks": 57,
       "id": 1
     },
     {
       "userId": 2,
       "bio": "Sunless bio update test 1",
-      "clicks": 11,
+      "clicks": 18,
       "id": 2
     },
     {
       "userId": 3,
       "bio": "HI IM JOSH",
-      "clicks": 22,
+      "clicks": 25,
       "id": 3
     },
     {
@@ -186,13 +186,13 @@
     {
       "userId": 8,
       "bio": "Laptop Profile",
-      "clicks": 1,
+      "clicks": 4,
       "id": 8
     },
     {
       "userId": 9,
       "bio": "Clover Talent Manager",
-      "clicks": 4,
+      "clicks": 7,
       "id": 9
     },
     {
@@ -324,12 +324,66 @@
       "id": 18
     }
   ],
-  "embeddedFeeds": [
+  "profileEmbeds": [
     {
       "profileId": 1,
       "twitter": "its_woodyyyy",
       "youtube": "UCGXET3gFu4dG1LJsm_obdog",
       "id": 1
+    },
+    {
+      "profileId": 2,
+      "twitter": "",
+      "youtube": "",
+      "id": 2
+    },
+    {
+      "profileId": 3,
+      "twitter": "",
+      "youtube": "",
+      "id": 3
+    },
+    {
+      "profileId": 4,
+      "twitter": "",
+      "youtube": "",
+      "id": 4
+    },
+    {
+      "profileId": 5,
+      "twitter": "",
+      "youtube": "",
+      "id": 5
+    },
+    {
+      "profileId": 6,
+      "twitter": "",
+      "youtube": "",
+      "id": 6
+    },
+    {
+      "profileId": 7,
+      "twitter": "",
+      "youtube": "",
+      "id": 7
+    },
+    {
+      "profileId": 8,
+      "twitter": "",
+      "youtube": "",
+      "id": 8
+    },
+    {
+      "profileId": 9,
+      "twitter": "Kovalo",
+      "youtube": "",
+      "id": 9
+    },
+    {
+      "profileId": 10,
+      "twitter": "",
+      "youtube": "",
+      "id": 10
     }
   ],
   "follows": [
@@ -447,6 +501,11 @@
       "userId": 1,
       "idOfUserFollowed": 3,
       "id": 52
+    },
+    {
+      "userId": 9,
+      "idOfUserFollowed": 3,
+      "id": 53
     }
   ]
 }

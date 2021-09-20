@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import { getCurrentUser, getFollowCheck, getFollowCount, getFollowedProfiles, getProfileLinks } from "../../ApiManager"
+import { getCurrentUser, getFollowCheck, getFollowCount, getProfileLinks } from "../../ApiManager"
 import "./Profiles.css"
 
 export const MyProfile = () => {

@@ -1,7 +1,6 @@
 import { useContext, useEffect, useRef, useState } from "react"
 import { useParams } from "react-router"
-import { getCurrentUser, getProfileLinks, getUsernamesForEmbeddedFeeds } from "../../ApiManager"
-import { TwitterTimelineEmbed } from 'react-twitter-embed';
+import { getCurrentUser, getProfileLinks } from "../../ApiManager"
 import "./Profiles.css"
 import Analytics from "./analytics/Analytics";
 import { FollowerContext } from "../provider/FollowerProvider";
@@ -13,10 +12,8 @@ import { FollowerContext } from "../provider/FollowerProvider";
 export const UserProfile = () => {
     const [profile, setProfile] = useState({})
     const [links, updateLinks] = useState([])
-    const [embed, updateEmbed] = useState({})
     const currentUser = getCurrentUser()
     const { profileId } = useParams()
-    const youtubeSubscribeNode = useRef()
 
     const { followings, getFollowings, followers, getFollowers, getQuickAccessFollowings, followUser, unfollowUser } = useContext(FollowerContext)
 
@@ -33,13 +30,6 @@ export const UserProfile = () => {
         },[profileId]
     )
 
-    useEffect(() => {
-        const youtubescript = document.createElement("script");
-        youtubescript.src = "https://apis.google.com/js/platform.js";
-        youtubescript.async = true
-        document.body.appendChild(youtubescript);
-    }, [])
-
     const fetchLinks = () => {
         getProfileLinks(profileId)
         .then((data => {updateLinks(data)}))
@@ -47,12 +37,6 @@ export const UserProfile = () => {
 
     useEffect(() => {
         fetchLinks()
-    },[profileId]
-    )
-    
-    useEffect(() => {
-        getUsernamesForEmbeddedFeeds(profileId)
-        .then((data => {updateEmbed(...data)}))
     },[profileId]
     )
 
@@ -77,16 +61,6 @@ export const UserProfile = () => {
             setFollowCheckState(undefined)
         }
     },[followers])
-
-    const createYouTubeButton = (embedId) => {
-        const customAttributes = {
-            "data-channelid": embedId,
-            "data-layout": "default",
-            "data-count": "default"
-        }
-    return <div className="g-ytsubscribe" ref={youtubeSubscribeNode} {...customAttributes}></div>
-
-    }
 
 
     return (
@@ -132,20 +106,6 @@ export const UserProfile = () => {
                                         .then(() => {fetchLinks()})}}>
                                     {link.url}
                                 </a>
-                                {embed !== undefined && link.url.startsWith("https://www.twitter") ? 
-                                    <TwitterTimelineEmbed
-                                    sourceType="profile"
-                                    screenName={`${embed.twitter}`}
-                                    options={{height: 400}}
-                                    />
-                                    : ""
-                                }
-
-                                {
-                                    embed !== undefined && link.url.startsWith("https://www.youtube") ? 
-                                    createYouTubeButton(embed.youtube)
-                                    : ""
-                                }
 
                             </div>
                         }
