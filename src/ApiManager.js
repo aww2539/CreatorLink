@@ -39,7 +39,7 @@ export const getFollowCheck = async (id) => {
 }
 
 export const getUsernamesForEmbeddedFeeds = async (id) => {
-    const res = await fetch(`http://localhost:8088/embeddedFeeds?profileId=${id}`)
+    const res = await fetch(`http://localhost:8088/profileEmbeds?profileId=${id}`)
     return await res.json()
 }
 

@@ -38,7 +38,7 @@ export const UserProfile = () => {
         youtubescript.src = "https://apis.google.com/js/platform.js";
         youtubescript.async = true
         document.body.appendChild(youtubescript);
-    }, [])
+    }, [profileId])
 
     const fetchLinks = () => {
         getProfileLinks(profileId)
@@ -93,23 +93,27 @@ export const UserProfile = () => {
         <>
         <article className="profile">
 
-            { followCheckState !== undefined ?
+            { 
+                profileId !== currentUser ?
+                
+                        followCheckState !== undefined ?
 
-                <button className="follow__button" onClick={() => {
-                    unfollowUser(parseInt(followCheckState?.id))
-                    .then(() => {
-                        updateProfileFollowerCount()
-                        .then(() => getQuickAccessFollowings(currentUser))
-                    })}}
-                    >Unfollow</button>
+                        <button className="follow__button" onClick={() => {
+                            unfollowUser(parseInt(followCheckState?.id))
+                            .then(() => {
+                                updateProfileFollowerCount()
+                                .then(() => getQuickAccessFollowings(currentUser))
+                            })}}
+                            >Unfollow</button>
 
-                : <button className="follow__button" onClick={() => {
-                    followUser(parseInt(currentUser), parseInt(profileId))
-                    .then(() => {
-                        updateProfileFollowerCount()
-                        .then(() => getQuickAccessFollowings(currentUser))
-                    })}}
-                    >Follow</button>
+                        : <button className="follow__button" onClick={() => {
+                            followUser(parseInt(currentUser), parseInt(profileId))
+                            .then(() => {
+                                updateProfileFollowerCount()
+                                .then(() => getQuickAccessFollowings(currentUser))
+                            })}}
+                            >Follow</button>
+                : ""
             }
 
             <h2>Welcome to {profile.user?.name}'s CreatorLink!</h2>
@@ -132,7 +136,7 @@ export const UserProfile = () => {
                                         .then(() => {fetchLinks()})}}>
                                     {link.url}
                                 </a>
-                                {embed !== undefined && link.url.startsWith("https://www.twitter") ? 
+                                {embed !== "" && link.url.startsWith("https://www.twitter") ? 
                                     <TwitterTimelineEmbed
                                     sourceType="profile"
                                     screenName={`${embed.twitter}`}
@@ -142,7 +146,7 @@ export const UserProfile = () => {
                                 }
 
                                 {
-                                    embed !== undefined && link.url.startsWith("https://www.youtube") ? 
+                                    embed !== "" && link.url.startsWith("https://www.youtube") ? 
                                     createYouTubeButton(embed.youtube)
                                     : ""
                                 }

@@ -21,9 +21,9 @@ export const SearchOutput = ({searchState}) => {
     useEffect(
         () => {
             if (searchState !== "") {
-                const foundProfiles = profiles.filter(profile => profile.user?.name.toLowerCase().startsWith(searchState.toLowerCase()))
-                if (foundProfiles !== undefined) {
-                    updateSearchResults(foundProfiles)
+                const filteredProfiles = profiles.filter(profile => profile.user?.name.toLowerCase().startsWith(searchState.toLowerCase()))
+                if (filteredProfiles !== undefined) {
+                    updateSearchResults(filteredProfiles)
                 } 
             } else {
                 updateSearchResults({})

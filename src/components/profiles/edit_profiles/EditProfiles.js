@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import { getCurrentUser } from "../../../ApiManager"
 import { EditProfileBio } from "./EditProfileBio"
+import { EditProfileEmbeds } from "./EditProfileEmbeds"
 import { EditProfileLinks } from "./EditProfileLinks"
 import "./EditProfiles.css"
 
@@ -18,6 +19,9 @@ export const EditProfile = () => {
             </section>
             <section className="edit__links">  
                 <EditProfileLinks />
+            </section>
+            <section className="edit__embeds">  
+                <EditProfileEmbeds />
             </section>
 
         </>

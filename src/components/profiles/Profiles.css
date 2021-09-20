@@ -38,3 +38,7 @@ div.profile__links {
     align-items: center;
     min-width: 350px;
 }
+
+TwitterTimelineEmbed {
+    border: none;
+}
