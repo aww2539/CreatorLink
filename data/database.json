@@ -170,61 +170,61 @@
     {
       "userId": 2,
       "bio": "Sunless bio update test 1",
-      "clicks": 22,
+      "clicks": 23,
       "id": 2
     },
     {
       "userId": 3,
       "bio": "HI IM JOSH",
-      "clicks": 30,
+      "clicks": 31,
       "id": 3
     },
     {
       "userId": 4,
       "bio": "hi",
-      "clicks": 42,
+      "clicks": 43,
       "id": 4
     },
     {
       "userId": 5,
       "bio": "Hi guys I'm Coach Steve at NSS",
-      "clicks": 41,
+      "clicks": 42,
       "id": 5
     },
     {
       "userId": 6,
       "bio": "Test Bio For Test Account",
-      "clicks": 2,
+      "clicks": 3,
       "id": 6
     },
     {
       "userId": 7,
       "bio": "",
-      "clicks": 4,
+      "clicks": 5,
       "id": 7
     },
     {
       "userId": 8,
       "bio": "Laptop Profile",
-      "clicks": 5,
+      "clicks": 6,
       "id": 8
     },
     {
       "userId": 9,
       "bio": "Clover Talent Manager",
-      "clicks": 11,
+      "clicks": 12,
       "id": 9
     },
     {
       "userId": 10,
       "bio": "",
-      "clicks": 5,
+      "clicks": 6,
       "id": 10
     },
     {
       "userId": 11,
       "bio": "",
-      "clicks": 0,
+      "clicks": 1,
       "id": 11
     }
   ],
@@ -547,6 +547,26 @@
       "userId": 11,
       "idOfUserFollowed": 9,
       "id": 57
+    },
+    {
+      "userId": 1,
+      "idOfUserFollowed": 6,
+      "id": 58
+    },
+    {
+      "userId": 1,
+      "idOfUserFollowed": 7,
+      "id": 59
+    },
+    {
+      "userId": 1,
+      "idOfUserFollowed": 8,
+      "id": 60
+    },
+    {
+      "userId": 1,
+      "idOfUserFollowed": 11,
+      "id": 61
     }
   ]
 }

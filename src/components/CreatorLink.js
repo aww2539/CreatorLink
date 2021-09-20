@@ -19,14 +19,14 @@ export const CreatorLink = () => {
                 if (localStorage.getItem("creatorLink_user")) {
                     return (
                         <>
-                            <header>
-                                <h1>CreatorLink</h1>
-                            </header>
                             <main id="mainContainer">
                                 <article className="nav">
                                     <Nav />
                                 </article>
                                 <article className="application">
+                                    <div className="header">
+                                        <h3>CreatorLink</h3>
+                                    </div>
                                     <ApplicationViews />
                                 </article>
                                 <article className="quick__access">

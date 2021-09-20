@@ -32,7 +32,7 @@ export const NewsFeed = () => {
     return (
         <>
             <article className="newsFeed">
-            <div>
+            <div className="createPost">
                 <button onClick={() => history.push("/home/create")}>Create Post</button>
             </div>
                 {
@@ -44,8 +44,10 @@ export const NewsFeed = () => {
 
                                 {post.userId === parseInt(currentUser) ? 
                                 <>
+                                    <div className="postButtons">
                                     <button onClick={() => history.push(`/home/post/edit/${post.id}`)}>Edit</button>
                                     <button className="btn btn-primary" onClick={() => {deletePost(post.id)}}>Delete</button>
+                                    </div>
                                 </> 
                                 : ""}
                                 

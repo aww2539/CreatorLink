@@ -5,6 +5,25 @@ article.newsFeed {
     margin: 1rem;
 }
 
+div.createPost button {
+    background-color: lightgrey;
+    border: none;
+    color: blue;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 2px 1px;
+    cursor: pointer;
+    border-radius: 16px;
+    font-size: 15px;
+    width: 110px;
+    height: 35px;
+}
+div.createPost button:hover {
+    background-color: lightslategrey;
+}
+
 article.newsFeed section {
     display: flex;
     flex-direction: column;
@@ -14,6 +33,25 @@ article.newsFeed section {
     border: solid lightslategrey;
     border-width: 0.5px;
     width: 600px;
+}
+
+section.feed__post div.postButtons button {
+    background-color: lightgrey;
+    border: none;
+    color: blue;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 2px 1px;
+    cursor: pointer;
+    border-radius: 16px;
+    font-size: 15px;
+    width: 75px;
+    height: 30px;
+}
+section.feed__post div.postButtons button:hover {
+    background-color: lightslategrey;
 }
 
 section.newPost__form {

@@ -27,6 +27,8 @@ div.navbar__item button.nav__button {
 }
 div.navbar__item button.nav__button:hover {
     background-color: lightslategrey;
+    box-shadow: 0px 5px 10px rgba(7, 234, 255, 0.4);
+    transform: translateY(-2px);
 }
 
 button.quickAccess {
@@ -40,14 +42,16 @@ button.quickAccess {
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 16px;
-    font-size: 20px;
+    font-size: 18px;
     width: 200px;
-    height: 60px;
+    height: 50px;
     word-wrap: break-word;
 }
 
 button.quickAccess:hover {
     background-color: lightslategrey;
+    box-shadow: 0px 5px 10px rgba(7, 234, 255, 0.4);
+    transform: translateY(-2px);
 }
 
 

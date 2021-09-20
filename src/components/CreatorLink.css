@@ -1,12 +1,21 @@
 #mainContainer {
     display: flex;
     flex-direction: row;
+    justify-content: center;
 }
 
-h1 {
+div.header h3 {
+    margin: 0.5rem;
+}
+
+div.header {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    margin: 0rem;
+    border: solid lightslategrey;
+    border-width: 0.5px;
+    width: 702px; 
 }
 
 #mainContainer article.nav {
@@ -17,7 +26,7 @@ h1 {
     border: solid lightslategrey;
     border-width: 0.5px;
     margin-right: 0px;
-    height: 700px;
+    height: 900px;
 }
 #mainContainer article.quick__access {
     display: flex;
@@ -27,7 +36,7 @@ h1 {
     overflow-y: scroll;
 }
 #mainContainer article.quick__access::-webkit-scrollbar {
-    width: 2px;
+    width: 1px;
 }
 #mainContainer article.quick__access::-webkit-scrollbar-track {
     box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
@@ -42,17 +51,17 @@ h1 {
     border: solid lightslategrey;
     border-width: 0.5px;
     margin-right: 0px;
-    height: 700px;
+    height: 900px;
 }
 
 #mainContainer article.application {
-    flex-basis: 75%;
+    flex-basis: 50%;
     display: flex;
     flex-direction: column;
     border: solid lightslategrey;
     align-items: center;
     border-width: 0.5px;
-    max-height: 700px;
+    max-height: 900px;
 }
 
 #mainContainer article.application {
