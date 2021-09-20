@@ -56,12 +56,9 @@ export const UserProfile = () => {
     },[profileId]
     )
 
-
     const updateProfileFollowerCount = () => { return getFollowers(profileId) }
 
     const updateProfileFollowingCount = () => { return getFollowings(profileId) }
-
-
 
     useEffect(() => {
         updateProfileFollowerCount()
@@ -135,7 +132,7 @@ export const UserProfile = () => {
                                         .then(() => {fetchLinks()})}}>
                                     {link.url}
                                 </a>
-                                {embed !== undefined && link.title === "Twitter" ? 
+                                {embed !== undefined && link.url.startsWith("https://www.twitter") ? 
                                     <TwitterTimelineEmbed
                                     sourceType="profile"
                                     screenName={`${embed.twitter}`}
@@ -143,10 +140,13 @@ export const UserProfile = () => {
                                     />
                                     : ""
                                 }
-                                {embed !== undefined && link.title === "YouTube" ? 
-                                    createYouTubeButton(embed?.youtube)
+
+                                {
+                                    embed !== undefined && link.url.startsWith("https://www.youtube") ? 
+                                    createYouTubeButton(embed.youtube)
                                     : ""
                                 }
+
                             </div>
                         }
                     })
