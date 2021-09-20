@@ -22,9 +22,11 @@ export const ApplicationViews = () => {
             </Route>
                     <Route exact path="/home/create">
                         <CreatePost />
+                        <NewsFeed />
                     </Route>
                     <Route exact path="/home/post/edit/:postId(\d+)">
                         <EditPost />
+                        <NewsFeed />
                     </Route>
 
             <Route exact path="/profile/:profileId(\d+)">

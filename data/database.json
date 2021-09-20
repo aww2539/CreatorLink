@@ -27,7 +27,7 @@
     {
       "email": "coach@steve.com",
       "password": "coach",
-      "name": "Coach",
+      "name": "Coach Steve @ NSS and Stuff",
       "id": 5
     },
     {
@@ -59,6 +59,12 @@
       "password": "scott",
       "name": "Scott",
       "id": 10
+    },
+    {
+      "email": "frank@frank.com",
+      "password": "frank",
+      "name": "Frank",
+      "id": 11
     }
   ],
   "posts": [
@@ -138,68 +144,88 @@
       "createdAt": 1631887577187,
       "edited": false,
       "id": 15
+    },
+    {
+      "userId": 1,
+      "body": "asdf",
+      "createdAt": 1632163744058,
+      "edited": false,
+      "id": 16
+    },
+    {
+      "userId": 11,
+      "body": "Frank checking in!",
+      "createdAt": 1632167137542,
+      "edited": false,
+      "id": 17
     }
   ],
   "profiles": [
     {
       "userId": 1,
       "bio": "Test Update",
-      "clicks": 57,
+      "clicks": 59,
       "id": 1
     },
     {
       "userId": 2,
       "bio": "Sunless bio update test 1",
-      "clicks": 18,
+      "clicks": 22,
       "id": 2
     },
     {
       "userId": 3,
       "bio": "HI IM JOSH",
-      "clicks": 25,
+      "clicks": 30,
       "id": 3
     },
     {
       "userId": 4,
       "bio": "hi",
-      "clicks": 40,
+      "clicks": 42,
       "id": 4
     },
     {
       "userId": 5,
       "bio": "Hi guys I'm Coach Steve at NSS",
-      "clicks": 39,
+      "clicks": 41,
       "id": 5
     },
     {
       "userId": 6,
       "bio": "Test Bio For Test Account",
-      "clicks": 1,
+      "clicks": 2,
       "id": 6
     },
     {
       "userId": 7,
       "bio": "",
-      "clicks": 3,
+      "clicks": 4,
       "id": 7
     },
     {
       "userId": 8,
       "bio": "Laptop Profile",
-      "clicks": 4,
+      "clicks": 5,
       "id": 8
     },
     {
       "userId": 9,
       "bio": "Clover Talent Manager",
-      "clicks": 7,
+      "clicks": 11,
       "id": 9
     },
     {
       "userId": 10,
       "bio": "",
-      "clicks": 2,
+      "clicks": 5,
       "id": 10
+    },
+    {
+      "userId": 11,
+      "bio": "",
+      "clicks": 0,
+      "id": 11
     }
   ],
   "profileLinks": [
@@ -240,7 +266,7 @@
       "url": "https://www.youtube.com/c/SunlessKhan",
       "title": "Sunless's YouTube Channel",
       "description": "Go sub!",
-      "clicks": 0,
+      "clicks": 1,
       "id": 4
     },
     {
@@ -498,14 +524,29 @@
       "id": 51
     },
     {
-      "userId": 1,
-      "idOfUserFollowed": 3,
-      "id": 52
-    },
-    {
       "userId": 9,
       "idOfUserFollowed": 3,
       "id": 53
+    },
+    {
+      "userId": 1,
+      "idOfUserFollowed": 3,
+      "id": 54
+    },
+    {
+      "userId": 11,
+      "idOfUserFollowed": 1,
+      "id": 55
+    },
+    {
+      "userId": 11,
+      "idOfUserFollowed": 2,
+      "id": 56
+    },
+    {
+      "userId": 11,
+      "idOfUserFollowed": 9,
+      "id": 57
     }
   ]
 }

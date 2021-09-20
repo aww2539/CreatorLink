@@ -1,6 +1,7 @@
 import { useHistory } from "react-router"
 import { useState } from "react/cjs/react.development"
 import { getCurrentUser } from "../../ApiManager"
+import "./Feed.css"
 
 
 export const CreatePost = () => {
@@ -37,8 +38,8 @@ export const CreatePost = () => {
 
     return (
         <>
-            <article>
-            <button className="btn btn-primary" onClick={() => {history.push("/home")}}>Cancel</button>
+            <section className="newPost__form">
+                <button className="btn btn-primary" onClick={() => {history.push("/home")}}>Cancel</button>
                 <h2>New Post?</h2>
                 <div>
                     <form className="newPost">
@@ -54,7 +55,7 @@ export const CreatePost = () => {
                                         }
                                     }
                                     required autoFocus
-                                    type="text"
+                                    type="textarea"
                                     className="form-control"
                                     placeholder="New Post..."
                                 />
@@ -65,7 +66,7 @@ export const CreatePost = () => {
                         </button>
                     </form>
                 </div>
-            </article>
+            </section>
         </>
     )
 }

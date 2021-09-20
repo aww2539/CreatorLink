@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router"
+import "./Feed.css"
 
 
 export const EditPost = () => {
@@ -41,7 +42,8 @@ export const EditPost = () => {
             <section className="editPost__form">
 
                 <h3>Editing {post.user?.name}'s Post!</h3>
-                <label htmlFor="body">Edit Post:</label>
+                    <div>
+                        <label htmlFor="body">Edit Post:</label>
                         <input
                             onChange = {
                                 (evt) => {
@@ -55,10 +57,11 @@ export const EditPost = () => {
                             className="form-control"
                             defaultValue={post.body}
                         />
-                <button className="btn btn-primary"  onClick={savePost}>
-                    Update
-                </button>
-
+                    </div>
+                <div className="editPost__buttons">
+                    <button className="btn btn-primary"  onClick={() => history.push("/home")}>Cancel</button>
+                    <button className="btn btn-primary"  onClick={savePost}>Update</button>
+                </div>
             </section>
         </>
     )

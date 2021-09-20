@@ -41,17 +41,13 @@ export const QuickAccess = () => {
             <h3>QuickAccess User List</h3>
             {
                 followedProfiles.map((profile) => {
-                return <div className="quickAccess">
-                            <ul className="quickAccess_list">
-                                <li className="quickAccess__item active">
-                                    <Link className="quickAccess__link" to={`/profile/${profile.id}`} onClick={() => {
-                                        Analytics.addProfileClick(profile.id, profile.clicks)
-                                        .then(() => {fetchProfiles()})}}>
-                                        {profile.user.name}
-                                    </Link>
-                                </li>
-                            </ul>
-                        </div>
+                    return <Link className="quickAccess__link" to={`/profile/${profile.id}`} onClick={() => {
+                                Analytics.addProfileClick(profile.id, profile.clicks)
+                                .then(() => {fetchProfiles()})}}>
+
+                                <button className="quickAccess">{profile.user.name}</button>
+
+                            </Link>
                 })
             }
         </>
