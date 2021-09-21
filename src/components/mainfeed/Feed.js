@@ -32,9 +32,9 @@ export const NewsFeed = () => {
     return (
         <>
             <article className="newsFeed">
-            <div className="createPost">
+            <section className="createPost__button">
                 <button onClick={() => history.push("/home/create")}>Create Post</button>
-            </div>
+            </section>
                 {
                     posts.map((post) => {
                         return <section className="feed__post" key={`post--${post.id}`}>

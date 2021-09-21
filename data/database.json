@@ -163,68 +163,68 @@
   "profiles": [
     {
       "userId": 1,
-      "bio": "Test Update",
+      "bio": "Josh",
       "clicks": 59,
       "id": 1
     },
     {
       "userId": 2,
       "bio": "Sunless bio update test 1",
-      "clicks": 23,
+      "clicks": 26,
       "id": 2
     },
     {
       "userId": 3,
       "bio": "HI IM JOSH",
-      "clicks": 31,
+      "clicks": 34,
       "id": 3
     },
     {
       "userId": 4,
       "bio": "hi",
-      "clicks": 43,
+      "clicks": 46,
       "id": 4
     },
     {
       "userId": 5,
       "bio": "Hi guys I'm Coach Steve at NSS",
-      "clicks": 42,
+      "clicks": 45,
       "id": 5
     },
     {
       "userId": 6,
       "bio": "Test Bio For Test Account",
-      "clicks": 3,
+      "clicks": 4,
       "id": 6
     },
     {
       "userId": 7,
       "bio": "",
-      "clicks": 5,
+      "clicks": 6,
       "id": 7
     },
     {
       "userId": 8,
       "bio": "Laptop Profile",
-      "clicks": 6,
+      "clicks": 8,
       "id": 8
     },
     {
       "userId": 9,
       "bio": "Clover Talent Manager",
-      "clicks": 12,
+      "clicks": 15,
       "id": 9
     },
     {
       "userId": 10,
       "bio": "",
-      "clicks": 6,
+      "clicks": 9,
       "id": 10
     },
     {
       "userId": 11,
       "bio": "",
-      "clicks": 1,
+      "clicks": 4,
       "id": 11
     }
   ],
@@ -268,16 +268,6 @@
       "description": "Go sub!",
       "clicks": 1,
       "id": 4
-    },
-    {
-      "profileId": 1,
-      "order": 4,
-      "show": true,
-      "title": "Instagram",
-      "url": "https://www.instagram.com",
-      "description": "Instagram",
-      "clicks": 0,
-      "id": 7
     },
     {
       "profileId": 3,
@@ -519,11 +509,6 @@
       "id": 50
     },
     {
-      "userId": 1,
-      "idOfUserFollowed": 9,
-      "id": 51
-    },
-    {
       "userId": 9,
       "idOfUserFollowed": 3,
       "id": 53
@@ -550,23 +535,13 @@
     },
     {
       "userId": 1,
-      "idOfUserFollowed": 6,
-      "id": 58
-    },
-    {
-      "userId": 1,
-      "idOfUserFollowed": 7,
-      "id": 59
-    },
-    {
-      "userId": 1,
-      "idOfUserFollowed": 8,
-      "id": 60
-    },
-    {
-      "userId": 1,
       "idOfUserFollowed": 11,
       "id": 61
+    },
+    {
+      "userId": 1,
+      "idOfUserFollowed": 9,
+      "id": 62
     }
   ]
 }

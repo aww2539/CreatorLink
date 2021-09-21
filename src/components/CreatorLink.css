@@ -4,7 +4,7 @@
     justify-content: center;
 }
 
-div.header h3 {
+div.header h2 {
     margin: 0.5rem;
 }
 
@@ -12,9 +12,8 @@ div.header {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    background-color: rgb(144, 144, 144);
     margin: 0rem;
-    border: solid lightslategrey;
-    border-width: 0.5px;
     width: 702px; 
 }
 
@@ -23,7 +22,8 @@ div.header {
     flex-direction: column;
     align-items: center;
     flex-basis: 10%;
-    border: solid lightslategrey;
+    background-color: rgb(192, 192, 192);
+    border-right: solid lightslategrey;
     border-width: 0.5px;
     margin-right: 0px;
     height: 900px;
@@ -32,11 +32,13 @@ div.header {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: rgb(192, 192, 192);
     min-width: 220px;
+    max-width: 250px;
     overflow-y: scroll;
 }
 #mainContainer article.quick__access::-webkit-scrollbar {
-    width: 1px;
+    width: 0.5px;
 }
 #mainContainer article.quick__access::-webkit-scrollbar-track {
     box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
@@ -48,7 +50,7 @@ div.header {
 
 #mainContainer article.quick__access {
     flex-basis: 20%;
-    border: solid lightslategrey;
+    border-left: solid lightslategrey;
     border-width: 0.5px;
     margin-right: 0px;
     height: 900px;
@@ -58,7 +60,10 @@ div.header {
     flex-basis: 50%;
     display: flex;
     flex-direction: column;
-    border: solid lightslategrey;
+    border-left: solid lightslategrey;
+    border-right: solid lightslategrey;
+    border-bottom: solid lightslategrey;
+    background-color: rgb(192, 192, 192);
     align-items: center;
     border-width: 0.5px;
     max-height: 900px;
@@ -70,7 +75,7 @@ div.header {
 }
 
 #mainContainer article.application::-webkit-scrollbar {
-    width: 1px;
+    width: 0.5px;
 }
    
 #mainContainer article.application::-webkit-scrollbar-track {

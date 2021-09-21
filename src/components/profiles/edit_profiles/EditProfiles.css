@@ -3,23 +3,40 @@
 section.edit__bio {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-around;
+    width: 600px;
 }
 
 section.edit__bio div{
     display: flex;
     flex-direction: column;
+    width: 250px;
 }
 
 section.edit__links {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    width: 600px;
 }
 
 section.edit__links div{
     display: flex;
     flex-direction: column;
+}
+
+section.edit__links h4 {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0rem;
+}
+
+section.edit__links fieldset {
+    padding-top: 0rem;
+}
+
+ol.profileLink__list {
+    margin-top: 0rem;
 }
 
 ol.profileLink__list li {

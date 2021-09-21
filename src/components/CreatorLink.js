@@ -25,7 +25,7 @@ export const CreatorLink = () => {
                                 </article>
                                 <article className="application">
                                     <div className="header">
-                                        <h3>CreatorLink</h3>
+                                        <h2>CreatorLink</h2>
                                     </div>
                                     <ApplicationViews />
                                 </article>
