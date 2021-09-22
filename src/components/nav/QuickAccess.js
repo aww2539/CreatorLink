@@ -38,7 +38,7 @@ export const QuickAccess = () => {
 
     return (
         <>
-            <h3>QuickAccess User List</h3>
+            <h3>QuickAccess</h3>
             {
                 followedProfiles.map((profile) => {
                     return <Link className="quickAccess__link" to={`/profile/${profile.id}`} onClick={() => {

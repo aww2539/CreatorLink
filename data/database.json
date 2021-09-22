@@ -158,37 +158,44 @@
       "createdAt": 1632167137542,
       "edited": false,
       "id": 17
+    },
+    {
+      "userId": 1,
+      "body": "hey",
+      "createdAt": 1632322263514,
+      "edited": false,
+      "id": 18
     }
   ],
   "profiles": [
     {
       "userId": 1,
-      "bio": "Josh",
+      "bio": "Bio here",
       "clicks": 59,
       "id": 1
     },
     {
       "userId": 2,
       "bio": "Sunless bio update test 1",
-      "clicks": 26,
+      "clicks": 27,
       "id": 2
     },
     {
       "userId": 3,
       "bio": "HI IM JOSH",
-      "clicks": 34,
+      "clicks": 35,
       "id": 3
     },
     {
       "userId": 4,
       "bio": "hi",
-      "clicks": 46,
+      "clicks": 47,
       "id": 4
     },
     {
       "userId": 5,
       "bio": "Hi guys I'm Coach Steve at NSS",
-      "clicks": 45,
+      "clicks": 46,
       "id": 5
     },
     {
@@ -218,13 +225,13 @@
     {
       "userId": 10,
       "bio": "",
-      "clicks": 9,
+      "clicks": 10,
       "id": 10
     },
     {
       "userId": 11,
       "bio": "",
-      "clicks": 4,
+      "clicks": 5,
       "id": 11
     }
   ],

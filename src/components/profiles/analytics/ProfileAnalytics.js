@@ -28,7 +28,7 @@ export const ProfileAnalytics = () => {
     return (
         <>
 
-        <Link className="back__button" to={`/profile/My${userId}/edit`}><button>Back</button></Link>
+        <Link className="back__button" to={`/profile/My${userId}`}><button>Back</button></Link>
         <article className="analytics">
             <h2>Analytics</h2>
             <h4>Profile Clicks: {profile?.clicks}</h4>
