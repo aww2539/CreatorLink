@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #001233;
 }
 
 code {
@@ -13,7 +14,7 @@ code {
 }
 
 #root {
-  margin: 2rem 2rem 2rem 2rem ;
+  margin: auto;
   min-width: 1000px;
   max-width: 1400px;
 }

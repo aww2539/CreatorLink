@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { getCurrentUser, getProfileLinks } from "../../../ApiManager"
+import "../edit_profiles/EditProfiles.css"
 
 export const ProfileAnalytics = () => {
     const [profile, setProfile] = useState({})
@@ -28,7 +29,7 @@ export const ProfileAnalytics = () => {
     return (
         <>
 
-        <Link className="back__button" to={`/profile/My${userId}/edit`}><button>Back</button></Link>
+        <Link to={`/profile/My${userId}`}><button className="edit__links">Back</button></Link>
         <article className="analytics">
             <h2>Analytics</h2>
             <h4>Profile Clicks: {profile?.clicks}</h4>

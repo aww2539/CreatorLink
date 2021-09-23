@@ -10,8 +10,7 @@ export const EditProfile = () => {
 
     return (
         <>
-            <Link className="back__button" to={`/profile/My${userId}`}><button>Back</button></Link>
-            <Link className="analytics__button" to={`/profile/My${userId}/analytics`}><button>Analytics</button></Link>
+            <Link to={`/profile/My${userId}`}><button className="back__button">Back</button></Link>
             <h2>Edit Profile</h2>
             <section className="edit__bio">
                 <EditProfileBio />

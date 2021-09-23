@@ -1,35 +1,86 @@
 #mainContainer {
     display: flex;
     flex-direction: row;
+    justify-content: center;
 }
 
-h1 {
+/* add box shadowing to main element */
+
+div.header h2 {
+    margin: 0.5rem;
+}
+
+div.header {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    background-color: #979dac;
+    margin: 0rem;
+    width: 702px; 
+}
+
+#mainContainer article.nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-basis: 10%;
+    background-color: #5c677d;
+    border-right: solid lightslategrey;
+    border-width: 0.5px;
+    margin-right: 0px;
+    height: 900px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 35px 0 rgba(0, 0, 0, 0.19);
+}
+#mainContainer article.quick__access {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #5c677d;
+    min-width: 200px;
+    max-width: 220px;
+    overflow-y: scroll;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 35px 0 rgba(0, 0, 0, 0.19);
+}
+#mainContainer article.quick__access::-webkit-scrollbar {
+    width: 0.5px;
+}
+#mainContainer article.quick__access::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+#mainContainer article.quick__access::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
 }
 
 #mainContainer article.quick__access {
     flex-basis: 20%;
-    border: solid black;
-    margin-right: 2rem;
-    height: 700px;
+    border-left: solid lightslategrey;
+    border-width: 0.5px;
+    margin-right: 0px;
+    height: 900px;
 }
 
 #mainContainer article.application {
-    flex-basis: 80%;
+    flex-basis: 50%;
     display: flex;
     flex-direction: column;
-    border: solid black;
-    max-height: 700px;
+    border-left: solid lightslategrey;
+    border-right: solid lightslategrey;
+    border-bottom: solid lightslategrey;
+    background-color: #979dac;
+    align-items: center;
+    border-width: 0.5px;
+    max-height: 900px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 35px 0 rgba(0, 0, 0, 0.19);
 }
 
 #mainContainer article.application {
     overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 #mainContainer article.application::-webkit-scrollbar {
-    width: 5px;
+    width: 0.5px;
 }
    
 #mainContainer article.application::-webkit-scrollbar-track {

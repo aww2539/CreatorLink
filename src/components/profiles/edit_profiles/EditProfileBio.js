@@ -60,7 +60,7 @@ export const EditProfileBio = () => {
                             className="form-control"
                             defaultValue={profile.bio}
                         />
-                <button className="btn btn-primary" onClick={saveBio}>
+                <button className="update__bio" onClick={saveBio}>
                     Update
                 </button>
             </div>

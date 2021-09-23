@@ -42,8 +42,10 @@ export const MyProfile = () => {
     
     return (
         <>
-
-        <Link className="edit__button" to={`/profile/My${userId}/edit`}><button>Edit Profile</button></Link>
+        <div className="profile__buttons">
+            <Link className="edit__button" to={`/profile/My${userId}/edit`}><button>Edit Profile</button></Link>
+            <Link className="analytics__button" to={`/profile/My${userId}/analytics`}><button>Analytics</button></Link>
+        </div>
         <article className="profile">
             <h2>Welcome to {profile.user?.name}'s CreatorLink!</h2>
             <h4>{profile.bio}</h4>

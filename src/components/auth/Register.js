@@ -82,7 +82,7 @@ export const Register = (props) => {
                 </fieldset>
                 <fieldset>
                     <label htmlFor="address"> Name </label>
-                    <input onChange={updateUser} type="text" id="name" className="form-control" placeholder="Enter your name" required />
+                    <input onChange={updateUser} type="text" id="name" maxLength="25" className="form-control" placeholder="Enter your name" required />
                 </fieldset>
                 <fieldset>
                     <Link className="cancel__button" to={`/login`}><button>Cancel</button></Link>
