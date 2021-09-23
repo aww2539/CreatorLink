@@ -22,7 +22,7 @@ export const NewsFeed = () => {
     )
 
     const deletePost = (id) => {
-        fetch(`http://localhost:8088/posts/${id}`, {
+        fetch(`https://creator-link-api-wod88.ondigitalocean.app/posts/${id}`, {
             method: "DELETE"
         })
         .then(fetchPosts)

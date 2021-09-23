@@ -26,8 +26,8 @@ export default {
                 })
             }
     
-            return await fetch(`http://localhost:8088/profileLinks/${id}`, chosenLinkData)
-            .then(() => { return fetch(`http://localhost:8088/profileLinks/${idOfLinkAbove}`, otherLinkData)})
+            return await fetch(`https://creator-link-api-wod88.ondigitalocean.app/profileLinks/${id}`, chosenLinkData)
+            .then(() => { return fetch(`https://creator-link-api-wod88.ondigitalocean.app/profileLinks/${idOfLinkAbove}`, otherLinkData)})
 
     },
 
@@ -54,7 +54,7 @@ export default {
                 })
             }
     
-            return await fetch(`http://localhost:8088/profileLinks/${id}`, chosenLinkData)
-            .then(() => {return fetch(`http://localhost:8088/profileLinks/${idOfLinkBelow}`, otherLinkData)})
+            return await fetch(`https://creator-link-api-wod88.ondigitalocean.app/profileLinks/${id}`, chosenLinkData)
+            .then(() => {return fetch(`https://creator-link-api-wod88.ondigitalocean.app/profileLinks/${idOfLinkBelow}`, otherLinkData)})
     }
 }

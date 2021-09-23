@@ -22,7 +22,7 @@ export const UserProfile = () => {
 
     useEffect(
         () => {
-            return fetch(`http://localhost:8088/profiles/${profileId}?_expand=user`)
+            return fetch(`https://creator-link-api-wod88.ondigitalocean.app/profiles/${profileId}?_expand=user`)
                 .then(response => response.json())
                 .then((data) => {
                     setProfile(data)

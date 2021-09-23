@@ -14,7 +14,7 @@ export default {
             })
         }
 
-        return fetch(`http://localhost:8088/profiles/${profileId}`, profileData)
+        return fetch(`https://creator-link-api-wod88.ondigitalocean.app/profiles/${profileId}`, profileData)
     },
 
     addLinkClick(linkId, linkClicks) {
@@ -29,7 +29,7 @@ export default {
             })
         }
 
-        return fetch(`http://localhost:8088/profileLinks/${linkId}`, linkData)
+        return fetch(`https://creator-link-api-wod88.ondigitalocean.app/profileLinks/${linkId}`, linkData)
     }
 
 }

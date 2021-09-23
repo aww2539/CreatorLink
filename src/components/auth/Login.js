@@ -9,7 +9,7 @@ export const Login = () => {
     const history = useHistory()
 
     const existingUserCheck = () => {
-        return fetch(`http://localhost:8088/users?email=${credentials.email}&password=${credentials.password}`)
+        return fetch(`https://creator-link-api-wod88.ondigitalocean.app/users?email=${credentials.email}&password=${credentials.password}`)
             .then(res => res.json())
             .then(user => user.length ? user[0] : false)
     }
