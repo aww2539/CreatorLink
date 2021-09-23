@@ -29,7 +29,7 @@ export const CreatePost = () => {
             body: JSON.stringify(postData)
         }
 
-        return fetch(`http://localhost:8088/posts`, fetchOption)
+        return fetch(`https://creator-link-api-wod88.ondigitalocean.app/posts`, fetchOption)
         .then(() => {
             history.push("/home")
         })

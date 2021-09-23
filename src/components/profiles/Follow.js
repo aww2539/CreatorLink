@@ -17,12 +17,12 @@ export default {
             body: JSON.stringify(followData)
         }
 
-        return fetch(`http://localhost:8088/follows`, fetchOption)
+        return fetch(`https://creator-link-api-wod88.ondigitalocean.app/follows`, fetchOption)
     },
 
     unfollowUser(id) {
 
-        return fetch(`http://localhost:8088/follows/${id}`, {
+        return fetch(`https://creator-link-api-wod88.ondigitalocean.app/follows/${id}`, {
             method: "DELETE"
         })
 

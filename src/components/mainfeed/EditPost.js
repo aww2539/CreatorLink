@@ -11,7 +11,7 @@ export const EditPost = () => {
     const history = useHistory()
 
     useEffect( () => {
-            return fetch(`http://localhost:8088/posts/${postId}?_expand=user`)
+            return fetch(`https://creator-link-api-wod88.ondigitalocean.app/posts/${postId}?_expand=user`)
                 .then(response => response.json())
                 .then((data) => {updatePost(data)})
     },[]
@@ -32,7 +32,7 @@ export const EditPost = () => {
             })
         }
 
-        return fetch(`http://localhost:8088/posts/${postId}`, fetchOption)
+        return fetch(`https://creator-link-api-wod88.ondigitalocean.app/posts/${postId}`, fetchOption)
                 .then(() => { history.push("/home") })
     }
 

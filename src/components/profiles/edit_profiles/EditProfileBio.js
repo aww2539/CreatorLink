@@ -10,7 +10,7 @@ export const EditProfileBio = () => {
         text: ""
     })
     const getProfileData = () => {
-        fetch(`http://localhost:8088/profiles/${currentUser}?_expand=user`)
+        fetch(`https://creator-link-api-wod88.ondigitalocean.app/profiles/${currentUser}?_expand=user`)
         .then(response => response.json())
         .then((data) => {
             setProfile(data)
@@ -36,7 +36,7 @@ export const EditProfileBio = () => {
             })
         }
 
-        return fetch(`http://localhost:8088/profiles/${currentUser}`, fetchOption)
+        return fetch(`https://creator-link-api-wod88.ondigitalocean.app/profiles/${currentUser}`, fetchOption)
                 .then(() => {
                     getProfileData()
                 })

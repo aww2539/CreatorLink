@@ -12,25 +12,25 @@ export const FollowerProvider = (props) => {
     const [quickAccessFollowings, setQuickAccessFollowings] = useState([])
 
     const getProfiles = () => {
-        return fetch(`http://localhost:8088/profiles?_expand=user`)
+        return fetch(`https://creator-link-api-wod88.ondigitalocean.app/profiles?_expand=user`)
         .then(res => res.json())
         .then(setProfiles)
     }
 
     const getFollowings = (id) => {
-        return fetch(`http://localhost:8088/follows?userId=${id}`)
+        return fetch(`https://creator-link-api-wod88.ondigitalocean.app/follows?userId=${id}`)
         .then(res => res.json())
         .then(setFollowings)
     }
 
     const getFollowers = (id) => {
-        return fetch(`http://localhost:8088/follows?idOfUserFollowed=${id}`)
+        return fetch(`https://creator-link-api-wod88.ondigitalocean.app/follows?idOfUserFollowed=${id}`)
         .then(res => res.json())
         .then(setFollowers)
     }
 
     const getQuickAccessFollowings = (id) => {
-        return fetch(`http://localhost:8088/follows?userId=${id}`)
+        return fetch(`https://creator-link-api-wod88.ondigitalocean.app/follows?userId=${id}`)
         .then(res => res.json())
         .then(setQuickAccessFollowings)
     }
@@ -50,12 +50,12 @@ export const FollowerProvider = (props) => {
             body: JSON.stringify(followData)
         }
 
-        return fetch(`http://localhost:8088/follows`, fetchOption)
+        return fetch(`https://creator-link-api-wod88.ondigitalocean.app/follows`, fetchOption)
     }
 
     const unfollowUser = (id) => {
 
-        return fetch(`http://localhost:8088/follows/${id}`, {
+        return fetch(`https://creator-link-api-wod88.ondigitalocean.app/follows/${id}`, {
             method: "DELETE"
         })
 
