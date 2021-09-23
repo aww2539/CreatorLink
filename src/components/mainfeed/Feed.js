@@ -31,7 +31,7 @@ export const NewsFeed = () => {
 
     const dateConverter = (timestamp) => {
         let date = new Date(timestamp)
-        return `${date.getMonth()}/${date.getDate()}/${date.getFullYear()}`
+        return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`
     }
 
 
