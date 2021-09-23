@@ -1,4 +1,25 @@
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
+
+button.back__button {
+    background-color: lightgrey;
+    border: none;
+    color: #0466c8;
+    padding: 5px 5px 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 2px 1px;
+    cursor: pointer;
+    border-radius: 16px;
+    font-size: 12px;
+    width: 50px;
+    height: 20px;
+}
+
+button.back__button:hover {
+    background-color: lightslategrey;
+}
 
 section.edit__bio {
     display: flex;
@@ -11,6 +32,30 @@ section.edit__bio div{
     display: flex;
     flex-direction: column;
     width: 250px;
+}
+
+section input.form-control {
+    width: 300px;
+}
+
+button.update__bio {
+    background-color: lightgrey;
+    border: none;
+    color: #0466c8;
+    padding: 5px 5px 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 2px 1px;
+    cursor: pointer;
+    border-radius: 16px;
+    font-size: 12px;
+    width: 50px;
+    height: 20px;
+}
+
+button.update__bio:hover {
+    background-color: lightslategrey;
 }
 
 section.edit__links {
@@ -46,4 +91,44 @@ ol.profileLink__list li {
 
 ol.profileLink__list a {
     margin: 0rem 1rem 0rem 0rem;
+}
+
+button.edit__links {
+    background-color: lightgrey;
+    border: none;
+    color: #0466c8;
+    padding: 5px 5px 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 2px 1px;
+    cursor: pointer;
+    border-radius: 16px;
+    font-size: 12px;
+    width: 50px;
+    height: 20px;
+}
+
+button.edit__links:hover {
+    background-color: lightslategrey;
+}
+
+button.move__links {
+    background-color: lightgrey;
+    border: none;
+    color: #0466c8;
+    padding: 5px 5px 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 2px 1px;
+    cursor: pointer;
+    border-radius: 16px;
+    font-size: 11px;
+    width: 70px;
+    height: 20px;
+}
+
+button.move__links:hover {
+    background-color: lightslategrey;
 }

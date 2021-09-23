@@ -39,7 +39,7 @@ export const CreatePost = () => {
     return (
         <>
             <section className="newPost__form">
-                <button className="btn btn-primary" onClick={() => {history.push("/home")}}>Cancel</button>
+                <button className="newPost" onClick={() => {history.push("/home")}}>Cancel</button>
                 <h2>New Post?</h2>
                 <div>
                     <form className="newPost">
@@ -61,7 +61,7 @@ export const CreatePost = () => {
                                 />
                             </div>
                         </fieldset>
-                        <button className="btn btn-primary" onClick={saveNewPost}>
+                        <button className="newPost" onClick={saveNewPost}>
                             Post!
                         </button>
                     </form>

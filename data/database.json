@@ -238,7 +238,7 @@
   "profileLinks": [
     {
       "profileId": 1,
-      "order": 1,
+      "order": 2,
       "show": true,
       "url": "https://www.twitter.com/its_woodyyyy",
       "title": "Twitter",
@@ -248,7 +248,7 @@
     },
     {
       "profileId": 1,
-      "order": 2,
+      "order": 1,
       "show": true,
       "url": "https://www.youtube.com/c/Woodyyyy",
       "title": "YouTube",

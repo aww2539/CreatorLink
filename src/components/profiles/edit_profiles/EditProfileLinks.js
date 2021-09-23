@@ -121,8 +121,8 @@ export const EditProfileLinks = () => {
                             />
                     </div>
                 </fieldset>
-                <button className="btn btn-primary" onClick={saveLink}>
-                    Save Link
+                <button className="edit__links" onClick={saveLink}>
+                    Save
                 </button>
             </form>
         </div>
@@ -141,16 +141,16 @@ export const EditProfileLinks = () => {
                         return <> 
                             <li key={link.id}><a href={link.url} target="_blank">{link.title}</a>
 
-                                {link.order === 1 ? "" : <button onClick={() => {
+                                {link.order === 1 ? "" : <button className="move__links" onClick={() => {
                                     OrderProfileLinks.moveLinkUp(link.id, link.order, foundLinkAbove?.id, foundLinkAbove?.order).then(() => {fetchLinks()})
                                 }}>Move Up</button>}
 
-                                {profileLinks.length === link.order ? "" : <button onClick={() => {
+                                {profileLinks.length === link.order ? "" : <button className="move__links" onClick={() => {
                                     OrderProfileLinks.moveLinkDown(link.id, link.order, foundLinkBelow?.id, foundLinkBelow?.order).then(() => {fetchLinks()}) 
                                 }}>Move Down</button>}
 
                             </li>
-                            <button className="delete__btn" onClick={() => {deleteLink(link.id)}}>Delete</button>
+                            <button className="edit__links" onClick={() => {deleteLink(link.id)}}>Delete</button>
                         </>
                     })
             }
