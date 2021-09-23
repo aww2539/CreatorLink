@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router"
+import { Link } from "react-router-dom"
 import { getCurrentUser, getPosts } from "../../ApiManager"
 import "./Feed.css"
 
@@ -43,7 +44,9 @@ export const NewsFeed = () => {
                 {
                     posts.map((post) => {
                         return <section className="feed__post" key={`post--${post.id}`}>
-                                <h3>{post.user?.name}</h3>
+                                <Link to={`/profile/${post.user?.id}`}>
+                                    <h3>{post.user?.name}</h3>
+                                </Link>
                                 <p>{post.body}</p>
                                 {post.edited === false ? <p>Posted at {dateConverter(post.createdAt)}</p> : <p>Edited at {dateConverter(post.createdAt)}</p>}
 
