@@ -28,6 +28,11 @@ export const NewsFeed = () => {
         .then(fetchPosts)
     }
 
+    const dateConverter = (timestamp) => {
+        let date = new Date(timestamp)
+        return `${date.getMonth()}/${date.getDate()}/${date.getFullYear()}`
+    }
+
 
     return (
         <>
@@ -40,7 +45,7 @@ export const NewsFeed = () => {
                         return <section className="feed__post" key={`post--${post.id}`}>
                                 <h3>{post.user?.name}</h3>
                                 <p>{post.body}</p>
-                                {post.edited === false ? <p>Posted at {post.createdAt}</p> : <p>Edited at {post.createdAt}</p>}
+                                {post.edited === false ? <p>Posted at {dateConverter(post.createdAt)}</p> : <p>Edited at {dateConverter(post.createdAt)}</p>}
 
                                 {post.userId === parseInt(currentUser) ? 
                                 <>
