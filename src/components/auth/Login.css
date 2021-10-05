@@ -13,6 +13,7 @@ fieldset {
     display: inline-block;
     margin: 0 auto;
     text-align: left;
+    padding: 1rem;
 }
 
 .form--login > fieldset > input[type="email"] {
@@ -67,5 +68,28 @@ fieldset {
 .dialog {
     min-width: 15rem;
     min-height: 5rem;
+}
+
+fieldset input.form-control {
+    width: 25rem;
+}
+
+button {
+    background-color: lightgrey;
+    border: none;
+    color: #0466c8;
+    padding: 2px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 2px 1px;
+    cursor: pointer;
+    border-radius: 16px;
+    font-size: 14px;
+    width: 90px;
+    height: 30px;
+}
+button:hover {
+    background-color: lightslategrey;
 }
 
