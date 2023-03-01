@@ -1,7 +1,7 @@
+import axios from "axios"
 import { useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router"
-import "./Feed.css"
-
+import "../mainfeed/Feed.css"
 
 export const EditPost = () => {
     const [post, updatePost] = useState({
@@ -11,29 +11,18 @@ export const EditPost = () => {
     const history = useHistory()
 
     useEffect( () => {
-            return fetch(`http://localhost:4000/api/posts/${postId}?_expand=user`)
-                .then(response => response.json())
-                .then((data) => {updatePost(data)})
-    },[]
+        axios.get(`http://localhost:4000/api/posts/${postId}`)
+            .then(({ data }) => {updatePost(data)})
+    },[postId]
     )
 
     const savePost = (event) => {
         event.preventDefault()
 
-        const fetchOption = {
-            method: "PATCH",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                body: post.body,
-                createdAt: Date.now(),
-                edited: true
+        axios.put(`http://localhost:4000/api/posts/update/${postId}`, post)
+            .then(() => {
+                history.push("/home")
             })
-        }
-
-        return fetch(`http://localhost:4000/api/posts/${postId}`, fetchOption)
-                .then(() => { history.push("/home") })
     }
 
     return (

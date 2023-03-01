@@ -1,44 +1,20 @@
+import axios from "axios"
 import { useEffect } from "react"
 import { useState } from "react/cjs/react.development"
-import { getCurrentUser } from "../../../ApiManager"
+import { getCurrentUser } from "../../../utils/apiManager"
 
 
-export const EditProfileBio = () => {
-    const [profile, setProfile] = useState({})
-    const currentUser = getCurrentUser()
+export const EditProfileBio = ({ userId, profile, refresh }) => {
     const [profileBio, updateProfileBio] = useState({
-        text: ""
+        bio: ""
     })
-    const getProfileData = () => {
-        fetch(`http://localhost:4000/api/profiles/${currentUser}?_expand=user`)
-        .then(response => response.json())
-        .then((data) => {
-            setProfile(data)
-        })
-    }
-
-    useEffect(
-        () => {
-            getProfileData()
-        },[]
-    )
 
     const saveBio = (event) => {
         event.preventDefault()
 
-        const fetchOption = {
-            method: "PATCH",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                bio: profileBio.text
-            })
-        }
-
-        return fetch(`http://localhost:4000/api/profiles/${currentUser}`, fetchOption)
+        axios.put(`http://localhost:4000/api/profiles/update/${profile.id}`, {bio: profileBio.bio})
                 .then(() => {
-                    getProfileData()
+                    refresh()
                 })
     }
 
@@ -51,7 +27,7 @@ export const EditProfileBio = () => {
                             onChange = {
                                 (evt) => {
                                     const copy = {...profileBio}
-                                    copy.text = evt.target.value
+                                    copy.bio = evt.target.value
                                     updateProfileBio(copy)
                                 }
                             }

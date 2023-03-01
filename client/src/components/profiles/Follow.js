@@ -1,6 +1,6 @@
 
 
-export default {
+const followAndUnfollow =  {
 
     followUser(userId, idOfUserFollowed) {
 
@@ -29,3 +29,5 @@ export default {
     }
 
 }
+
+export default followAndUnfollow

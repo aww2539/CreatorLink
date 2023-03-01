@@ -1,7 +1,9 @@
+import axios from "axios"
 import { useEffect, useState } from "react"
-import { useHistory, useParams } from "react-router"
+import { useHistory } from "react-router"
 import { Link } from "react-router-dom"
-import { getCurrentUser, getPosts } from "../../ApiManager"
+import { getCurrentUser, getPosts } from "../../utils/apiManager"
+import dateConverter from "../../utils/dataConverter"
 import "./Feed.css"
 
 
@@ -10,30 +12,16 @@ export const NewsFeed = () => {
     const currentUser = getCurrentUser()
     const history = useHistory()
 
-    const fetchPosts = () => {
-        getPosts()
-        .then((posts) => {updatePosts(posts)})
+    const getAndSetPosts = () => {
+        getPosts().then(updatePosts)
     }
-
-    useEffect( 
-        () => {
-            fetchPosts()
-        },
-        []
-    )
 
     const deletePost = (id) => {
-        fetch(`http://localhost:4000/api/posts/${id}`, {
-            method: "DELETE"
-        })
-        .then(fetchPosts)
+        axios.delete(`http://localhost:4000/api/posts/delete/${id}`)
+            .then(getAndSetPosts)
     }
 
-    const dateConverter = (timestamp) => {
-        let date = new Date(timestamp)
-        return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`
-    }
-
+    useEffect(() => { getAndSetPosts() }, [])
 
     return (
         <>
@@ -42,13 +30,13 @@ export const NewsFeed = () => {
                 <button onClick={() => history.push("/home/create")}>Create Post</button>
             </section>
                 {
-                    posts.map((post) => {
+                    posts?.map((post) => {
                         return <section className="feed__post" key={`post--${post.id}`}>
-                                <Link to={`/profile/${post.user?.id}`}>
-                                    <h3>{post.user?.name}</h3>
+                                <Link to={`/profile/${post.userId}`}>
+                                    <h4>{post.user?.firstName} {post.user?.lastName}</h4>
                                 </Link>
                                 <p>{post.body}</p>
-                                {post.edited === false ? <p>Posted at {dateConverter(post.createdAt)}</p> : <p>Edited at {dateConverter(post.createdAt)}</p>}
+                                {post.updatedAt ? <p>Updated at {dateConverter(post.updatedAt)}</p> : <p>Posted at {dateConverter(post.insertedAt)}</p>}
 
                                 {post.userId === parseInt(currentUser) ? 
                                 <>

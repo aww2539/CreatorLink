@@ -1,11 +1,11 @@
-import { Nav } from "./nav/Nav"
-import { QuickAccess } from "./nav/QuickAccess"
+import { NavDrawer } from "./nav/Nav"
+// import { QuickAccess } from "./nav/QuickAccess"
 import "./CreatorLink.css"
 import { ApplicationViews } from "../ApplicationViews"
 import { Login } from "./auth/Login"
 import { Register } from "./auth/Register"
 import { Redirect, Route } from "react-router"
-import { FollowerProvider } from "./provider/FollowerProvider"
+import { FollowerProvider } from "./providers/FollowerProvider"
 
 
 export const CreatorLink = () => {
@@ -21,7 +21,7 @@ export const CreatorLink = () => {
                         <>
                             <main id="mainContainer">
                                 <article className="nav">
-                                    <Nav />
+                                    <NavDrawer />
                                 </article>
                                 <article className="application">
                                     <div className="header">
@@ -29,9 +29,9 @@ export const CreatorLink = () => {
                                     </div>
                                     <ApplicationViews />
                                 </article>
-                                <article className="quick__access">
+                                {/* <article className="quick__access">
                                     <QuickAccess />
-                                </article>
+                                </article> */}
                             </main>
                         </>
                 );

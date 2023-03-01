@@ -1,12 +1,11 @@
 import React from "react"
 import { Route } from "react-router-dom"
-import { getCurrentUser } from "./ApiManager"
-import { CreatePost } from "./components/mainfeed/CreatePost"
-import { EditPost } from "./components/mainfeed/EditPost"
+import { getCurrentUser } from "./utils/apiManager"
+import { CreatePost } from "./components/posts/CreatePost"
+import { EditPost } from "./components/posts/EditPost"
 import { NewsFeed } from "./components/mainfeed/Feed"
 import { ProfileAnalytics } from "./components/profiles/analytics/ProfileAnalytics"
 import { EditProfile } from "./components/profiles/edit_profiles/EditProfiles"
-import { MyProfile } from "./components/profiles/MyProfile"
 import { UserProfile } from "./components/profiles/UserProfiles"
 import { Search } from "./components/search/Search"
 
@@ -24,22 +23,18 @@ export const ApplicationViews = () => {
                         <CreatePost />
                         <NewsFeed />
                     </Route>
-                    <Route exact path="/home/post/edit/:postId(\d+)">
+                    <Route exact path="/home/post/edit/:postId">
                         <EditPost />
                         <NewsFeed />
                     </Route>
 
-            <Route exact path="/profile/:profileId(\d+)">
+            <Route exact path="/profile/:profileId">
                 <UserProfile />
             </Route>
-
-            <Route exact path={`/profile/My${userId}`}>
-                <MyProfile />
-            </Route>
-                    <Route exact path={`/profile/My${userId}/edit`}>
+                    <Route path="/profile/:profileId/edit">
                         <EditProfile />
                     </Route>
-                    <Route exact path={`/profile/My${userId}/analytics`}>
+                    <Route exact path="/profile/:profileId/analytics">
                         <ProfileAnalytics />
                     </Route>
 

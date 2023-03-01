@@ -1,62 +1,48 @@
-import { useEffect } from "react";
 import { useState } from "react/cjs/react.development";
-import { getCurrentUser, getProfileLinks } from "../../../ApiManager";
-import OrderProfileLinks from "./OrderProfileLinks";
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import "./EditProfiles.css"
+import axios from "axios";
 
-
-export const EditProfileLinks = () => {
-    const [profileLinks, updateProfileLinks] = useState([])
-    const userId = getCurrentUser()
+export const EditProfileLinks = ({ userId, profileId, links, refresh }) => {
     const [link, updateLink] = useState({
-        show: true,
-        title: "",
+        name: "",
         url: "",
         description: "",
     });
-    
-    const fetchLinks = async () => {
-        getProfileLinks(userId)
-        .then((data => {updateProfileLinks(data)}))
-    }
-
-    useEffect(() => {
-        fetchLinks()
-    },[]
-    )
 
     const saveLink = (event) => {
         event.preventDefault()
 
         const newLink = {
-            profileId: parseInt(userId),
-            order: profileLinks.length + 1,
-            show: true,
-            title: link.title,
+            profileId: profileId,
+            userId: userId,
+            order: links.length + 1,
+            name: link.name,
             url: link.url,
             description: link.description,
             clicks: 0
         }
 
-        const fetchOption = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(newLink)
-        }
-
-        return fetch("http://localhost:4000/api/profileLinks", fetchOption)
+        axios.post("http://localhost:4000/api/profile_links", newLink)
                 .then(() => {
-                    fetchLinks()
+                    refresh()
                 })
     }
 
     const deleteLink = (id) => {
-        fetch(`http://localhost:4000/api/profileLinks/${id}`, {
-            method: "DELETE"
-        })
-        .then(fetchLinks)
+        axios.delete(`http://localhost:4000/api/profile_links/${id}`)
+            .then(() => {
+                refresh()
+            })
+    }
+
+    const changeLinkOrder = (direction, id) => {
+        console.log(direction, id)
+        axios.put(`http://localhost:4000/api/profile_links/${id}/move/${direction}`)
+            .then(() => {
+                refresh()
+            })
     }
 
 
@@ -69,19 +55,19 @@ export const EditProfileLinks = () => {
             <form className="linkForm">
                 <fieldset>
                     <div className="form-group">
-                        <label htmlFor="name">Title:</label>
+                        <label htmlFor="name">Name:</label>
                         <input
                             onChange = {
                                 (evt) => {
                                     const copy = {...link}
-                                    copy.title = evt.target.value
+                                    copy.name = evt.target.value
                                     updateLink(copy)
                                 }
                             }
                             required autoFocus
                             type="text"
                             className="form-control"
-                            placeholder="Link Title"
+                            placeholder="Link Name"
                         />
                     </div>
                 </fieldset>
@@ -103,7 +89,7 @@ export const EditProfileLinks = () => {
                         />
                     </div>
                 </fieldset>
-                <fieldset>
+                {/* <fieldset>
                     <div className="form-group">
                         <label htmlFor="description">Description</label>
                             <input 
@@ -120,7 +106,7 @@ export const EditProfileLinks = () => {
                                 placeholder="Link Description"
                             />
                     </div>
-                </fieldset>
+                </fieldset> */}
                 <button className="btn btn-primary" onClick={saveLink}>
                     Save Link
                 </button>
@@ -130,25 +116,12 @@ export const EditProfileLinks = () => {
             <h4>Current links</h4>
             <ol className="profileLink__list">
             {
-                profileLinks.map((link) => {
-                        const linkAbove = link.order - 1
-                        const linkBelow = link.order + 1
-                        const foundLinkAbove = profileLinks.find(l => l.order === linkAbove)
-                        const foundLinkBelow = profileLinks.find(l => l.order === linkBelow)
-                        console.log(link.order);
-
-
+                links?.map((link) => {
                         return <> 
-                            <li key={link.id}><a href={link.url} target="_blank" rel="noreferrer">{link.title}</a>
-
-                                {link.order === 1 ? "" : <button onClick={() => {
-                                    OrderProfileLinks.moveLinkUp(link.id, link.order, foundLinkAbove?.id, foundLinkAbove?.order).then(() => {fetchLinks()})
-                                }}>Move Up</button>}
-
-                                {profileLinks.length === link.order ? "" : <button onClick={() => {
-                                    OrderProfileLinks.moveLinkDown(link.id, link.order, foundLinkBelow?.id, foundLinkBelow?.order).then(() => {fetchLinks()}) 
-                                }}>Move Down</button>}
-
+                            <li key={link.id}>
+                                <a href={link.url} target="_blank" rel="noreferrer">{link.name}</a>
+                                <ArrowUpwardIcon onClick={() => changeLinkOrder('up', link.id)}/>
+                                <ArrowDownwardIcon onClick={() => changeLinkOrder('down', link.id)}/>
                             </li>
                             <button className="delete__btn" onClick={() => {deleteLink(link.id)}}>Delete</button>
                         </>

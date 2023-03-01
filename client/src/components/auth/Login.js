@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react"
-import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom";
+import axios from 'axios';
+
 import "./Login.css"
 
 export const Login = () => {
@@ -8,18 +9,12 @@ export const Login = () => {
     const existDialog = useRef()
     const history = useHistory()
 
-    const existingUserCheck = () => {
-        return fetch(`http://localhost:4000/api/users?email=${credentials.email}&password=${credentials.password}`)
-            .then(res => res.json())
-            .then(user => user.length ? user[0] : false)
-    }
-
     const handleLogin = (e) => {
         e.preventDefault()
-        existingUserCheck()
-            .then(exists => {
-                if (exists) {
-                    localStorage.setItem("creatorLink_user", exists.id)
+        axios.post(`http://localhost:4000/api/users/login`, credentials)
+            .then(({data}) => {
+                if (data.id) {
+                    localStorage.setItem("creatorLink_user", data.id)
                     history.push("/")
                 } else {
                     existDialog.current.showModal()

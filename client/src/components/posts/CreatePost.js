@@ -1,7 +1,8 @@
+import axios from "axios"
 import { useHistory } from "react-router"
 import { useState } from "react/cjs/react.development"
-import { getCurrentUser } from "../../ApiManager"
-import "./Feed.css"
+import { getCurrentUser } from "../../utils/apiManager"
+import "../mainfeed/Feed.css"
 
 
 export const CreatePost = () => {
@@ -13,26 +14,15 @@ export const CreatePost = () => {
 
     const saveNewPost = (event) => {
         event.preventDefault()
-
         const postData = {
             userId: parseInt(currentUser),
             body: newPost.body,
-            createdAt: Date.now(),
-            edited: false
         }
 
-        const fetchOption = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(postData)
-        }
-
-        return fetch(`http://localhost:4000/api/posts`, fetchOption)
-        .then(() => {
-            history.push("/home")
-        })
+        axios.post(`http://localhost:4000/api/posts`, postData)
+            .then(() => {
+                history.push("/home")
+            })
     }
 
 

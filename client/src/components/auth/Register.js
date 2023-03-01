@@ -7,37 +7,18 @@ export const Register = () => {
     const [user, setUser] = useState({})
     const conflictDialog = useRef()
 
-    // const history = useHistory()
+    const history = useHistory()
 
     const handleRegister = (e) => {
         console.log(user)
         e.preventDefault()
         axios.post("http://localhost:4000/api/users/create_user", user)
             .then(({ data }) => {
-                console.log(data)
+                if (data.id) {
+                    localStorage.setItem("creatorLink_user", data.id)
+                    history.push("/")
+                }
             })
-            // .then(res => res.json())
-            // .then(createdUser => {
-            //     if (createdUser.hasOwnProperty("id")) {
-            //         localStorage.setItem("creatorLink_user", createdUser.id)
-            //         const newProfile = { userId: createdUser.id, bio: "", clicks: 0 }
-            
-            //         const fetchOption = {
-            //             method: "POST",
-            //             headers: {
-            //                 "Content-Type": "application/json"
-            //             },
-            //             body: JSON.stringify(newProfile)
-            //         }
-            
-            //         return fetch("http://localhost:4000/api/profiles", fetchOption)
-            //                 .then(() => { history.push("/") })
-                    
-            //     }
-            // })
-
-
-        
     }
 
     const updateUser = (evt) => {

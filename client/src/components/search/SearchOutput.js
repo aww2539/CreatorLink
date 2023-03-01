@@ -1,36 +1,34 @@
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import { getProfiles } from "../../ApiManager"
+import { getProfiles } from "../../utils/apiManager"
 import Analytics from "../profiles/analytics/Analytics"
 
 
 export const SearchOutput = ({searchState}) => {
     const [searchResults, updateSearchResults] = useState([])
-    const [profiles, updateProfiles] = useState([])
+    const [profiles, setProfiles] = useState([])
 
-    const fetchProfiles = () => {
-        getProfiles()
-        .then((data) => {updateProfiles(data)})
+    const getAndSetProfiles = () => {
+        getProfiles().then(setProfiles)
     }
 
     useEffect( () => { 
-        fetchProfiles() 
+        getAndSetProfiles() 
     },[] 
     )
 
-    useEffect(
-        () => {
-            if (searchState !== "") {
-                const foundProfiles = profiles.filter(profile => profile.user?.name.toLowerCase().startsWith(searchState.toLowerCase()))
-                if (foundProfiles !== undefined) {
-                    updateSearchResults(foundProfiles)
-                } 
-            } else {
-                updateSearchResults({})
-            }
-        },
-        [searchState]
-    )
+    useEffect(() => {
+        console.log(searchState)
+        if (searchState !== "") {
+            const foundProfiles = profiles.filter(profile => profile.user?.username.toLowerCase().startsWith(searchState.toLowerCase()))
+            console.log(foundProfiles)
+            if (foundProfiles !== undefined) {
+                updateSearchResults(foundProfiles)
+            } 
+        } else {
+            updateSearchResults({})
+        }
+    }, [searchState])
 
     return (
         <>
@@ -40,7 +38,7 @@ export const SearchOutput = ({searchState}) => {
                     searchResults.map(result => {
                         return <Link className="search__link" to={`/profile/${result.id}`} onClick={() => {
                                 Analytics.addProfileClick(result.id, result.clicks)}}>
-                                    <h3>{result?.user.name}</h3>
+                                    <h3>{result?.user.username}</h3>
                                 </Link>
                         
                     })

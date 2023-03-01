@@ -4,11 +4,18 @@ defmodule ClElixir.Users.User do
 
   import Ecto.Changeset
 
+  alias ClElixir.Posts.Post
+  alias ClElixir.Profiles.Profile
+
   schema "users" do
-    field :username, :string
     field :email, :string
+    field :username, :string
     field :first_name, :string
     field :last_name, :string
+    field :password, :string
+
+    has_many :posts, Post, foreign_key: :user_id
+    has_one :profile, Profile, foreign_key: :user_id
   end
 
   def changeset(data \\ %__MODULE__{}, params) do
