@@ -30,13 +30,21 @@ defmodule ClElixirWeb.Router do
     end
 
     scope "/profile_links" do
+      get("/:id", ProfileLinkController, :index)
+      put("/update/:id", ProfileLinkController, :update)
       post("/", ProfileLinkController, :create_link)
       delete("/:id", ProfileLinkController, :delete_link)
-      get("/:id", ProfileLinkController, :index)
       get("/profile/:profile_id", ProfileLinkController, :get_links_by_profile)
-      put("/update/:id", ProfileLinkController, :update)
       put("/:id/move/:direction", ProfileLinkController, :reorder_link)
       put("/:id/add_click", ProfileLinkController, :add_click)
+    end
+
+    scope "/follows" do
+      get("/user_follows/:user_id", FollowController, :get_follows)
+      get("/user_followers/:user_id", FollowController, :get_followers)
+      post("/follow", FollowController, :follow_user)
+      delete("/delete/:id", FollowController, :unfollow_user)
+      get("/follow_check/:profile_id", FollowController, :follow_check)
     end
 
   end

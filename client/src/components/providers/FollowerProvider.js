@@ -1,68 +1,55 @@
+import axios from "axios"
 import React, { useState, createContext } from "react"
 
-// The context is imported and used by individual components that need data
 export const FollowerContext = createContext()
 
-// This component establishes what data can be used.
 export const FollowerProvider = (props) => {
-    const [profiles, setProfiles] = useState([])
-    const [followings, setFollowings] = useState([])
+    const [follows, setFollows] = useState([])
     const [followers, setFollowers] = useState([])
-    const [quickAccessFollowings, setQuickAccessFollowings] = useState([])
+    const [followCheck, setFollowCheck] = useState(false)
 
-    const getProfiles = () => {
-        return fetch(`http://localhost:4000/api/profiles?_expand=user`)
-        .then(res => res.json())
-        .then(setProfiles)
-    }
-
-    const getFollowings = (id) => {
-        return fetch(`http://localhost:4000/api/follows?userId=${id}`)
-        .then(res => res.json())
-        .then(setFollowings)
+    const getFollows = (id) => {
+        axios.get(`http://localhost:4000/api/follows/user_follows/${id}`)
+            .then(({ data }) => {
+                setFollows(data)
+            })
     }
 
     const getFollowers = (id) => {
-        return fetch(`http://localhost:4000/api/follows?idOfUserFollowed=${id}`)
-        .then(res => res.json())
-        .then(setFollowers)
+        axios.get(`http://localhost:4000/api/follows/user_followers/${id}`)
+            .then(({ data }) => {
+                setFollowers(data)
+            })
     }
 
-    const getQuickAccessFollowings = (id) => {
-        return fetch(`http://localhost:4000/api/follows?userId=${id}`)
-        .then(res => res.json())
-        .then(setQuickAccessFollowings)
-    }
+    const checkForFollow = (profileId) => {
+        axios.get(`http://localhost:4000/api/follows/follow_check/${profileId}`)
+            .then(({ data }) => {
+                setFollowCheck(data)
+            })
+    } 
 
-    const followUser = (userId, idOfUserFollowed) => {
-
+    const followUser = (userId, profileId) => {
         const followData = {
-            userId: userId,
-            idOfUserFollowed: idOfUserFollowed
+            followId: userId,
+            followerId: profileId
         }
-
-        const fetchOption = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(followData)
-        }
-
-        return fetch(`http://localhost:4000/api/follows`, fetchOption)
+        axios.post(`http://localhost:4000/api/follows/follow`, followData)
+            .then(() => {
+                getFollowers(profileId)
+            })
     }
 
-    const unfollowUser = (id) => {
-
-        return fetch(`http://localhost:4000/api/follows/${id}`, {
-            method: "DELETE"
-        })
-
+    const unfollowUser = (id, profileId) => {
+        axios.delete(`http://localhost:4000/api/follows/delete/${id}`)
+            .then(() => {
+                getFollowers(profileId)
+            })
     }
 
     return (
         <FollowerContext.Provider value={{
-           profiles, getProfiles, followings, getFollowings, followers, getFollowers, quickAccessFollowings, getQuickAccessFollowings, followUser, unfollowUser
+           follows, getFollows, followers, getFollowers, followUser, unfollowUser, followCheck, checkForFollow
         }}>
             {props.children}
         </FollowerContext.Provider>

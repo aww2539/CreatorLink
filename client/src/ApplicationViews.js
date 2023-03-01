@@ -1,6 +1,5 @@
 import React from "react"
 import { Route } from "react-router-dom"
-import { getCurrentUser } from "./utils/apiManager"
 import { CreatePost } from "./components/posts/CreatePost"
 import { EditPost } from "./components/posts/EditPost"
 import { NewsFeed } from "./components/mainfeed/Feed"
@@ -10,7 +9,6 @@ import { UserProfile } from "./components/profiles/UserProfiles"
 import { Search } from "./components/search/Search"
 
 export const ApplicationViews = () => {
-    const userId = getCurrentUser()
     return (
         <>
             <Route exact path="/">

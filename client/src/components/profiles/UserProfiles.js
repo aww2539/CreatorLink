@@ -1,20 +1,28 @@
+import axios from "axios";
 import { useContext, useEffect, useState } from "react"
 import { useParams } from "react-router"
-import { getCurrentUserId, getProfileLinks } from "../../utils/apiManager"
-import "./Profiles.css"
-import axios from "axios";
 import { Link } from "react-router-dom";
-// import { FollowerContext } from "../providers/FollowerProvider";
+import { getCurrentUserId } from "../../utils/apiManager"
+import { FollowerContext } from "../providers/FollowerProvider";
+import "./Profiles.css"
 
 export const UserProfile = () => {
+    const { 
+        follows, 
+        getFollows, 
+        followers, 
+        getFollowers, 
+        followCheck, 
+        checkForFollow, 
+        followUser, 
+        unfollowUser
+    } = useContext(FollowerContext)
     const [profile, setProfile] = useState({})
     const [links, setLinks] = useState([])
+
     const currentUserId = getCurrentUserId()
     const { profileId } = useParams()
 
-    // const { followings, getFollowings, followers, getFollowers, getQuickAccessFollowings, followUser, unfollowUser } = useContext(FollowerContext)
-
-    // const [followCheckState, setFollowCheckState] = useState({})
 
     const getAndSetProfileAndLinks = () => {
         axios.get(`http://localhost:4000/api/profiles/${profileId}`)
@@ -27,35 +35,19 @@ export const UserProfile = () => {
 
     useEffect(() => {
         getAndSetProfileAndLinks()
+        getFollows(profileId)
+        getFollowers(profileId)
         },[profileId]
+    )
+
+    useEffect(() => {
+        checkForFollow(profileId)
+        },[profileId, followers]
     )
 
     const handleAnalytics = (linkId) => {
         axios.put(`http://localhost:4000/api/profile_links/${linkId}/add_click`)
     }
-
-    // const updateProfileFollowerCount = () => { return getFollowers(profileId) }
-
-    // const updateProfileFollowingCount = () => { return getFollowings(profileId) }
-
-    // useEffect(() => {
-    //     updateProfileFollowerCount()
-    // },[profileId])
-
-    // useEffect(() => {
-    //     updateProfileFollowingCount()
-    // },[profileId])
-
-    // useEffect(() => {
-    //     const followCheck = followers.find(f => f.userId === parseInt(currentUser) && f.idOfUserFollowed === parseInt(profileId))
-    //     if (followCheck !== undefined) {
-    //         setFollowCheckState(followCheck)
-            
-    //     } else {
-    //         setFollowCheckState(undefined)
-    //     }
-    // },[followers])
-
 
     return (
         <>
@@ -68,32 +60,26 @@ export const UserProfile = () => {
             )}
 
 
-            {/* { followCheckState !== undefined ?
-
-                <button className="follow__button" onClick={() => {
-                    unfollowUser(parseInt(followCheckState?.id))
-                    .then(() => {
-                        updateProfileFollowerCount()
-                        .then(() => getQuickAccessFollowings(currentUser))
-                    })}}
-                    >Unfollow</button>
-
-                : <button className="follow__button" onClick={() => {
-                    followUser(parseInt(currentUser), parseInt(profileId))
-                    .then(() => {
-                        updateProfileFollowerCount()
-                        .then(() => getQuickAccessFollowings(currentUser))
-                    })}}
-                    >Follow</button>
-            } */}
+            { profileId != currentUserId && (
+                followCheck.id
+                ? (
+                    <button className="follow__button" onClick={() => {unfollowUser(followCheck.id, profileId)}}>
+                        Unfollow
+                    </button>
+                ) : (
+                        <button className="follow__button" onClick={() => {followUser(currentUserId, profileId)}}>
+                            Follow
+                        </button>
+                    )
+            )}
 
             <h2>Welcome to {profile.user?.firstName}'s CreatorLink!</h2>
             
             <h4>{profile.bio}</h4>
 
-            {/* <div className="follow__counts">
-                <p>Following: {followings.length}</p><p>Followers: {followers.length}</p>
-            </div> */}
+            <div className="follow__counts">
+                <p>Following: {follows.length}</p><p>Followers: {followers.length}</p>
+            </div>
 
             <section className="profile__links">
                 {
