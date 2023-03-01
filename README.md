@@ -6,15 +6,8 @@ CreatorLink offers a one-stop shop for users to find all their favorite content 
 
 ## Tech
 
-- Frontend
--- Javascript
--- React
--- MaterialUI
+- Frontend: Javascript, React, MaterialUI
 
-- Backend
--- Elixir
--- Phoenix
--- Ecto
+- Backend: Elixir, Phoenix, Ecto
 
-- Database
--- PostgreSQL
+- Database: PostgreSQL
