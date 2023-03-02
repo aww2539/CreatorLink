@@ -4,6 +4,7 @@ defmodule ClElixir.Profiles do
 
   alias ClElixir.Profiles.Profile
   alias ClElixir.Repo
+  alias Ecto.Multi
 
   def index(params) do
     id = params["id"]
@@ -24,6 +25,21 @@ defmodule ClElixir.Profiles do
   def list do
     Profile.with_assocs()
     |> Repo.all()
+  end
+
+  def add_view(params) do
+    IO.inspect(params)
+    id = params["id"]
+    profile = Profile |> Repo.get!(id)
+    view_number = profile.views + 1
+
+    Multi.new()
+    |> Multi.update(:add_profile_view, Profile.add_view(profile, view_number))
+    |> Repo.transaction(to_result?: true)
+    |> case do
+      {:ok, _} -> {:ok, :success}
+      error -> error
+    end
   end
 
 end

@@ -50,19 +50,11 @@ export const getProfiles = async () => {
     return res
 }
 
-export const getFollowCount = async (id) => {
-    const res = await fetch(`http://localhost:4000/api/follows?idOfUserFollowed=${id}`)
-    return await res.json()
+export const addProfileView = async (profileId) => {
+    const res = await axios.post(`http://localhost:4000/api/profiles/${profileId}/add_view`)
+        .then(({ data }) => {
+            return data
+        })
+    return res
 }
-
-export const getFollowCheck = async (id) => {
-    const res = await fetch(`http://localhost:4000/api/follows?userId=${id}`)
-    return await res.json()
-}
-
-export const getUsernamesForEmbeddedFeeds = async (id) => {
-    const res = await fetch(`http://localhost:4000/api/embeddedFeeds?profileId=${id}`)
-    return await res.json()
-}
-
 

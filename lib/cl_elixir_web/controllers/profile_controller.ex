@@ -19,4 +19,10 @@ defmodule ClElixirWeb.ProfileController do
     Profiles.list()
     |> json_as_camel_case(conn)
   end
+
+  def add_view(conn, params) do
+    params
+    |> Profiles.add_view()
+    |> json_as_camel_case(conn)
+  end
 end

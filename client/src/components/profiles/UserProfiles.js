@@ -2,7 +2,7 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react"
 import { useParams } from "react-router"
 import { Link } from "react-router-dom";
-import { getCurrentUserId } from "../../utils/apiManager"
+import { addProfileView, getCurrentUserId } from "../../utils/apiManager"
 import { FollowerContext } from "../providers/FollowerProvider";
 import "./Profiles.css"
 
@@ -34,6 +34,12 @@ export const UserProfile = () => {
     
 
     useEffect(() => {
+        profileId != currentUserId && (
+            addProfileView(profileId) 
+            )
+    },[profileId])
+
+    useEffect(() => {
         getAndSetProfileAndLinks()
         getFollows(profileId)
         getFollowers(profileId)
@@ -63,7 +69,7 @@ export const UserProfile = () => {
             { profileId != currentUserId && (
                 followCheck.id
                 ? (
-                    <button className="follow__button" onClick={() => {unfollowUser(followCheck.id, profileId)}}>
+                    <button className="follow__button" onClick={() => {unfollowUser(followCheck.id, currentUserId, profileId)}}>
                         Unfollow
                     </button>
                 ) : (

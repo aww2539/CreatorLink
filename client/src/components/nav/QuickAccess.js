@@ -1,20 +1,21 @@
 import React, { useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { getCurrentUserId } from "../../utils/apiManager"
-import { FollowerContext } from "../provider/FollowerProvider"
+import { FollowerContext } from "../providers/FollowerProvider"
 import "./Nav.css"
 
 export const QuickAccess = () => {
     const [profileData, setProfileData] = useState([])
-    const { follows, getFollows } = useContext(FollowerContext)
+    const { quickAccess, getQuickAccess } = useContext(FollowerContext)
     const userId = getCurrentUserId()
 
     useEffect(() => {
-        setProfileData(follows.profiles)
-    },[follows])
+        const data = quickAccess.map((f) => f.follower)
+        setProfileData(data)
+    },[quickAccess])
 
     useEffect(() => {
-        getFollows(userId)
+        getQuickAccess(userId)
     },[userId])
 
 
@@ -25,7 +26,7 @@ export const QuickAccess = () => {
                 profileData.map((profile) => {
                     return (
                         <Link className="quickAccess__link" to={`/profile/${profile.id}`}>
-                            <button className="quickAccess">{profile.user.name}</button>
+                            <button className="quickAccess">{profile.username}</button>
                         </Link>
                     )
                 })

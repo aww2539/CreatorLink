@@ -25,4 +25,9 @@ defmodule ClElixir.Profiles.Profile do
     data
     |> cast(params, __schema__(:fields))
   end
+
+  def add_view(data, views) do
+    data
+    |> change(views: views)
+  end
 end

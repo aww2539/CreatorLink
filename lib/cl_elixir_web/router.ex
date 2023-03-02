@@ -27,6 +27,7 @@ defmodule ClElixirWeb.Router do
       get("/:id", ProfileController, :index)
       get("/", ProfileController, :list)
       put("/update/:id", ProfileController, :update)
+      post("/:id/add_view", ProfileController, :add_view)
     end
 
     scope "/profile_links" do
