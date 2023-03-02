@@ -11,3 +11,11 @@ CreatorLink offers a one-stop shop for users to find all their favorite content 
 - Backend: Elixir, Phoenix, Ecto
 
 - Database: PostgreSQL
+
+
+### TO DO
+- Refactor more FE components that are functioning, but poorly
+- Replace QuickAccess drawer with MUI
+- Replace Edit Profile forms with MUI dialogs
+- Replace Post form with MUI dialog
+- Replace Feed with MUI
