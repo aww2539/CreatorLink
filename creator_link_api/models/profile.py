@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from .user import User
 
 class Profile(models.Model):
     bio = models.EmailField(max_length=254)

@@ -1,0 +1,20 @@
+[
+    {
+        "model": "creator_link_api.profile",
+        "pk": 1,
+        "fields": {
+            "bio": "Admin Bio",
+            "views": 1,
+            "user": 1
+        }
+    },
+    {
+        "model": "creator_link_api.profile",
+        "pk": 2,
+        "fields": {
+            "bio": "Alex Bio",
+            "views": 1,
+            "user": 2
+        }
+    }
+]

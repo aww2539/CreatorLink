@@ -1,0 +1,22 @@
+[
+    {
+        "model": "creator_link_api.posts",
+        "pk": 1,
+        "fields": {
+            "body": "Admin Bio",
+            "user": 1,
+            "inserted_at": "2023-03-5T14:51:39.989Z",
+            "updated_at": null
+        }
+    },
+    {
+        "model": "creator_link_api.posts",
+        "pk": 2,
+        "fields": {
+            "body": "Alex Bio",
+            "user": 2,
+            "inserted_at": "2023-03-5T14:51:39.989Z",
+            "updated_at": null
+        }
+    }
+]

@@ -1,0 +1,24 @@
+[
+    {
+        "model": "creator_link_api.user",
+        "pk": 1,
+        "fields": {
+            "username": "Admin",
+            "first_name": "Admin",
+            "last_name": "Admin",
+            "email": "admin@admin.com",
+            "password": "admin"
+        }
+    },
+    {
+        "model": "creator_link_api.user",
+        "pk": 2,
+        "fields": {
+            "username": "Alex",
+            "first_name": "Alex",
+            "last_name": "Woodall",
+            "email": "Alex@Alex.com",
+            "password": "alex"
+        }
+    }
+]

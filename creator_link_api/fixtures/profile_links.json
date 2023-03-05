@@ -1,0 +1,24 @@
+[
+    {
+        "model": "creator_link_api.profilelinks",
+        "pk": 1,
+        "fields": {
+            "name": "Admin's Google Link",
+            "url": "https://www.google.com",
+            "order": 1,
+            "clicks": 1,
+            "profile": 1
+        }
+    },
+    {
+        "model": "creator_link_api.profilelinks",
+        "pk": 2,
+        "fields": {
+            "name": "Alex's Google Link",
+            "url": "https://www.google.com",
+            "order": 1,
+            "clicks": 2,
+            "profile": 2
+        }
+    }
+]
