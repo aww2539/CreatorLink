@@ -6,10 +6,6 @@
 name: Elixir CI
 
 on:
-  push:
-    paths-ignore:
-      - "client/**"
-      
   pull_request:
     branches: [ "elixir" ]
     paths-ignore:
