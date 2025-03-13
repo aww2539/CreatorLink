@@ -1,4 +1,5 @@
 import axios from 'axios';
+import humps from 'humps';
 
 
 export const getCurrentUserId = () => {
@@ -16,7 +17,10 @@ export const getCurrentUser = () => {
 export const getPosts = async () => {
     const res = await axios.get("http://localhost:4000/api/posts")
         .then(({ data }) => {
-            return data
+            console.log(data)
+            const formatted = humps.camelizeKeys(data)
+            console.log(formatted)
+            return humps.camelizeKeys(data)
         })
     return res
 }
@@ -24,7 +28,7 @@ export const getPosts = async () => {
 export const getUsers = async () => {
     const res = await axios.get("http://localhost:4000/api/users")
     .then(({ data }) => {
-        return data
+        return humps.camelizeKeys(data)
     })
     return res
 }
@@ -32,7 +36,7 @@ export const getUsers = async () => {
 export const getProfileLinks = async (profileId) => {
     const res = await axios.get(`http://localhost:4000/api/profile_links/${profileId}`)
         .then(({ data }) => {
-            return data
+            return humps.camelizeKeys(data)
         })
     return res
 }
@@ -45,7 +49,7 @@ export const getUserProfile = async (id) => {
 export const getProfiles = async () => {
     const res = await axios.get("http://localhost:4000/api/profiles")
         .then(({ data }) => {
-            return data
+            return humps.camelizeKeys(data)
         })
     return res
 }
@@ -53,7 +57,7 @@ export const getProfiles = async () => {
 export const addProfileView = async (profileId) => {
     const res = await axios.post(`http://localhost:4000/api/profiles/${profileId}/add_view`)
         .then(({ data }) => {
-            return data
+            return humps.camelizeKeys(data)
         })
     return res
 }

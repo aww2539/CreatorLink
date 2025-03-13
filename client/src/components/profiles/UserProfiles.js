@@ -4,6 +4,7 @@ import { useParams } from "react-router"
 import { Link } from "react-router-dom";
 import { addProfileView, getCurrentUserId } from "../../utils/apiManager"
 import { FollowerContext } from "../providers/FollowerProvider";
+import humps from 'humps';
 import "./Profiles.css"
 
 export const UserProfile = () => {
@@ -24,11 +25,17 @@ export const UserProfile = () => {
     const { profileId } = useParams()
 
 
-    const getAndSetProfileAndLinks = () => {
+    const getAndSetProfile = () => {
         axios.get(`http://localhost:4000/api/profiles/${profileId}`)
             .then(({data}) => {
-                setProfile(data)
-                setLinks(data.profileLinks)
+                setProfile(humps.camelizeKeys(data))
+            })
+    }
+
+    const getAndSetProfileLinks = () => {
+        axios.get(`http://localhost:4000/api/profile_links?profile_id=${profileId}`)
+            .then(({data}) => {
+                setLinks(humps.camelizeKeys(data))
             })
     }
     
@@ -40,7 +47,8 @@ export const UserProfile = () => {
     },[profileId])
 
     useEffect(() => {
-        getAndSetProfileAndLinks()
+        getAndSetProfile()
+        getAndSetProfileLinks()
         getFollows(profileId)
         getFollowers(profileId)
         },[profileId]
@@ -51,9 +59,9 @@ export const UserProfile = () => {
         },[profileId, followers]
     )
 
-    const handleAnalytics = (linkId) => {
-        axios.put(`http://localhost:4000/api/profile_links/${linkId}/add_click`)
-    }
+    // const handleAnalytics = (linkId) => {
+    //     axios.put(`http://localhost:4000/api/profile_links/${linkId}/add_click`)
+    // }
 
     return (
         <>
@@ -94,7 +102,8 @@ export const UserProfile = () => {
                             <div key={`link--${link.id}`} className="profile__links">
                                 <h3>{link.name}</h3>
                                 <p>{link.description}</p>
-                                <a href={link.url} target="_blank" rel="noreferrer" onClick={() => handleAnalytics(link.id)} >
+                                {/* <a href={link.url} target="_blank" rel="noreferrer" onClick={() => handleAnalytics(link.id)} > */}
+                                <a href={link.url} target="_blank" rel="noreferrer" >
                                     {link.url}
                                 </a>
                             </div>

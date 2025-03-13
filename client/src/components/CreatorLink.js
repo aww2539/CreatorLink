@@ -29,9 +29,9 @@ export const CreatorLink = () => {
                                     </div>
                                     <ApplicationViews />
                                 </article>
-                                <article className="quick__access">
+                                {/* <article className="quick__access">
                                     <QuickAccess />
-                                </article>
+                                </article> */}
                             </main>
                         </>
                 );

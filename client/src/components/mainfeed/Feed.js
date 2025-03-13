@@ -32,13 +32,13 @@ export const NewsFeed = () => {
                 {
                     posts?.map((post) => {
                         return <section className="feed__post" key={`post--${post.id}`}>
-                                <Link to={`/profile/${post.userId}`}>
+                                <Link to={`/profile/${post.user.id}`}>
                                     <h4>{post.user?.firstName} {post.user?.lastName}</h4>
                                 </Link>
                                 <p>{post.body}</p>
                                 {post.updatedAt ? <p>Updated at {dateConverter(post.updatedAt)}</p> : <p>Posted at {dateConverter(post.insertedAt)}</p>}
 
-                                {post.userId === parseInt(currentUser) ? 
+                                {post.user.id === parseInt(currentUser) ? 
                                 <>
                                     <div className="postButtons">
                                     <button onClick={() => history.push(`/home/post/edit/${post.id}`)}>Edit</button>
